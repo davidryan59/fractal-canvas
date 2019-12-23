@@ -3,7 +3,7 @@ import setupFractal from './items/setupFractal'
 
 
 // TEMP
-import drawFractal from '../graphics/drawFractal'
+import drawCanvas from '../graphics/drawCanvas'
 import iterateFractal from '../graphics/iterateFractal'
 
 
@@ -24,7 +24,7 @@ const setupObjectStore = (objStore, reduxStore) => {
   iterateFractal(objStore, reduxStore)
   iterateFractal(objStore, reduxStore)
   iterateFractal(objStore, reduxStore)
-  drawFractal(objStore, reduxStore)
+  drawCanvas(objStore, reduxStore)
 
 
 }
