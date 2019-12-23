@@ -1,3 +1,5 @@
+import iterateFractalFully from './iterateFractalFully'
+
 // Maths
 const degreesToRadians = Math.PI / 180
 
@@ -11,6 +13,8 @@ const thicknessFactor2 = 1.2
 
 const drawFractal = (objStore, getReduxState) => {
   const ctx = objStore.canvas.ctx
+
+  if (!objStore.fractal.current) iterateFractalFully(objStore, getReduxState)
   const items = objStore.fractal.current
 
   // General setup

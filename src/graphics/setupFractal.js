@@ -1,21 +1,24 @@
 import * as ui from '../constants/uiNames'
 import { getSliderDisplayValue } from '../getters/slider'
-import iterateFractal from '../graphics/iterateFractal'
 
 const setupFractal = (objStore, getReduxState) => {
+  console.log("Refreshing fractal setup")
   // Get relevant parameters from reduxState
   const reduxState = getReduxState()
-  const maxIterations = 1 * getSliderDisplayValue(reduxState, ui.SLIDER_MAX_ITERATIONS)
-  const angle1 = 1 * getSliderDisplayValue(reduxState, ui.SLIDER_ANGLE_1)
-  const angle2 = 1 * getSliderDisplayValue(reduxState, ui.SLIDER_ANGLE_2)
+  const scale_start = getSliderDisplayValue(reduxState, ui.SLIDER_SCALE_START)
+  const angle_start = getSliderDisplayValue(reduxState, ui.SLIDER_ANGLE_START)
+  const scale_1_1 = getSliderDisplayValue(reduxState, ui.SLIDER_SCALE_1_1)
+  const angle_1_1 = getSliderDisplayValue(reduxState, ui.SLIDER_ANGLE_1_1)
+  const scale_1_2 = getSliderDisplayValue(reduxState, ui.SLIDER_SCALE_1_2)
+  const angle_1_2 = getSliderDisplayValue(reduxState, ui.SLIDER_ANGLE_1_2)
 
   // Setup fractal area of objStore
   objStore.fractal = {}
   objStore.fractal.start = {
     id: 1,
     vector: [Math.floor(0.5 * objStore.canvas.elt.width), 20],
-    scale: 200,         // Will match to canvas
-    angleDeg: 5         // Should be pointing vertically up
+    scale: scale_start,         // Will match to canvas
+    angleDeg: angle_start         // Should be pointing vertically up
   }
   objStore.fractal.rules = [
     {
@@ -36,29 +39,25 @@ const setupFractal = (objStore, getReduxState) => {
       children: [
         {
           id: 1,
-          vector: [0, 0.5],
-          scale: 0.8,
-          angleDeg: angle1
+          vector: [0, 1],
+          scale: scale_1_1,
+          angleDeg: angle_1_1
         },
         {
           id: 1,
-          vector: [0, 0.5],
-          scale: 0.7,
-          angleDeg: angle2
+          vector: [0, 1],
+          scale: scale_1_2,
+          angleDeg: angle_1_2
         },
         {
           id: 0,
           vector: [0, 0],
-          scale: 0.5,
+          scale: 1,
           angleDeg: 0
         }
       ]
     }
   ]
-  objStore.fractal.iteration = 0
-  objStore.fractal.current = [objStore.fractal.start]
-
-  for (let i=0; i<maxIterations; i++) iterateFractal(objStore, getReduxState)
 }
 
 export default setupFractal

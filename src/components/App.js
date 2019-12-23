@@ -8,9 +8,16 @@ import * as ui from '../constants/uiNames'
 
 
 const App = props =>
-  <div className="App">
-    <CanvasC />
-    <PanelC id={ui.MAIN_PANEL} />
+  <div className="appDiv">
+    <div className='flex justifyStart'>
+      <CanvasC />
+    </div>
+    <div className='flex justifyStart'>
+      <PanelC id={ui.PANEL_MAIN} innerClassNames='greyBack' />
+      <PanelC id={ui.PANEL_ITERATION_0} innerClassNames='greyBack' />
+      <PanelC id={ui.PANEL_F1_C1} innerClassNames='greyBack' />
+      <PanelC id={ui.PANEL_F1_C2} innerClassNames='greyBack' />
+    </div>
   </div>
 
 // <StateViewerC />

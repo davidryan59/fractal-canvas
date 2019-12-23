@@ -1,21 +1,105 @@
 body {
-  margin: 10px;
-  padding: 10px;
-  background: #FFF;
+  margin: 0px;
+  background: #444;
   font-family: monospace;
   font-size: 12px;
-  color: #000;
+  color: #DDD;
   text-align: center;
 }
 
-div {
-  background: #FFE;
+.appDiv {
+  margin: 5px;
+  background: #222;
+  border: 1px #999 solid;
+  border-radius: 10px;
+  padding: 7px;
 }
 
-p {
-  background: #FEF;
+.appTopLine {
+  margin: 5px 0px;
+  font-size: 14px;
+}
+
+div {
+  margin: 2px;
+  padding: 2px;
 }
 
 canvas {
-  background: #444;
+  border: 1px solid #444;
+  background: #000;
+  border-radius: 10px;
 }
+
+.stateViewerDiv {
+  background: #331;
+  border: 1px #ABF solid;
+  border-radius: 7px;
+  padding: 5px;
+  font-family: monospace;
+  font-size: 9;
+}
+
+button {
+  margin: 2px;
+  padding: 4px;
+  border-radius: 4px;
+  background: #DDFFCC;
+  color: #01B;
+  font-size: 12px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.picklist {
+  background: #FFDDCC;
+  color: #02A;
+  font-size: 12px;
+}
+
+select {
+  cursor: pointer;
+}
+
+input[type=range] {
+  background-color: rgba(0, 0, 0, 0);
+}
+/* Rest of input range stylings generated from online app
+and put in styles.inputrange.css
+See: https://github.com/danielstern/range.css/ */
+
+
+.labelColour {
+  color: #FEA;
+}
+
+.valueColour {
+  color: #ADF;
+}
+
+.greyBack {
+  background: #2D2D2D;
+  border-radius: 4px;
+}
+
+.flex {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: stretch;
+  align-content: center;
+}
+
+.justifyStart {
+  justify-content: start;
+}
+
+.alignCentre {
+  align-items: center;
+}
+
+/*
+Flex box help:
+https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Flexbox
+https://css-tricks.com/snippets/css/a-guide-to-flexbox/
+``*/
