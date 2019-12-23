@@ -1,5 +1,5 @@
 import { getActionObject } from '../actions'
-import { windowSizeChangeMinDiff } from '../_params'
+import * as gen from '../constants/general'
 import * as cts from '../constants'
 
 
@@ -18,6 +18,6 @@ export const windowResizeHandler = (event, reduxStore) => {
 
   // Only dispatch action if change is more than a specific amount,
   // to avoid too many window resize actions
-  if (windowSizeChangeMinDiff <= windowSizeChangeDiff)
+  if (gen.windowSizeChangeMinDiff <= windowSizeChangeDiff)
     dispatch(getActionObject(cts.WINDOW_RESIZE, {width:newWidth, height:newHeight}))
 }
