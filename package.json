@@ -2,6 +2,15 @@
   "name": "fractal-canvas",
   "version": "0.1.0",
   "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/davidryan59/fractal-canvas.git"
+  },
+  "author": {
+    "name": "David Ryan",
+    "email": "davidryan1998@hotmail.com",
+    "url": "https://github.com/davidryan59"
+  },
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
