@@ -2,7 +2,7 @@ const cos = Math.cos
 const sin = Math.sin
 const degreesToRadians = Math.PI / 180
 
-const iterateFractal = (objStore, reduxStore) => {
+const iterateFractal = (objStore, getReduxState) => {
   const items = objStore.fractal.current
   const rules = objStore.fractal.rules
   const result = []

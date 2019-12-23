@@ -1,4 +1,4 @@
-// import * as cts from '../constants'
+import { fractalUpdate } from '../graphics/fractalUpdates'
 
 let nextActionId = 0
 export const getActionObject = (type, data) => ({
@@ -7,10 +7,10 @@ export const getActionObject = (type, data) => ({
   ...data
 })
 
+let nextThunkId = 0
 export const getThunk = (type, data) => (dispatch, getState, objStore) => {
-  console.log(data)
-  dispatch(getActionObject(type, data))
-  // if (data.id === cts.SOME_CONSTANT) {
-  //   // Do another thing
-  // }
+  const theData = { thunkId: nextThunkId++, ...data }
+  console.log(theData)
+  dispatch(getActionObject(type, theData))
+  fractalUpdate(data, getState, objStore)
 }

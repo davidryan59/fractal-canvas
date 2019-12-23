@@ -9,7 +9,7 @@ const proportion1 = 0.4
 const thicknessFactor2 = 1.2
 
 
-const drawFractal = (objStore, reduxStore) => {
+const drawFractal = (objStore, getReduxState) => {
   const ctx = objStore.canvas.ctx
   const items = objStore.fractal.current
 

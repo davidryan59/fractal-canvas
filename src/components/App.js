@@ -1,15 +1,18 @@
 import React from 'react';
+
 import CanvasC from './CanvasC';
-import StateViewerC from './StateViewerC';
+import PanelC from './PanelC';
+// import StateViewerC from './StateViewerC';
+
+import * as ui from '../constants/uiNames'
 
 
 const App = props =>
   <div className="App">
-    <p>Para before canvas</p>
     <CanvasC />
-    <p>Para after canvas</p>
-    <div>Inner div</div>
-    <StateViewerC />
+    <PanelC id={ui.MAIN_PANEL} />
   </div>
+
+// <StateViewerC />
 
 export default App

@@ -1,11 +1,16 @@
-import { combineReducersWithOuterState } from '../redux-extensions'
+import { combineReducers } from 'redux'
 
 import windowReducer from './window'
+import buttons from './buttons'
+import picklists from './picklists'
+import sliders from './sliders'
+import lastAction from './lastAction'
 
-const lastAction = (state = {}, action, topState) => action
-
-const appReducer = combineReducersWithOuterState({
+const appReducer = combineReducers({
   window: windowReducer,
+  buttons,
+  picklists,
+  sliders,
   lastAction
 })
 

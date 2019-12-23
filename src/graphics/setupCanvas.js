@@ -1,4 +1,4 @@
-const setupCanvas = (objStore, reduxStore) => {
+const setupCanvas = (objStore, getReduxState) => {
   const canvasElt = document.getElementById('main-canvas')
   const ctx = canvasElt.getContext('2d')
   objStore.canvas = {}

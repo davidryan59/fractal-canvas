@@ -1,0 +1,4 @@
+export const WINDOW_RESIZE = 'WINDOW_RESIZE'
+export const SLIDER_MOVE = 'SLIDER_MOVE'
+export const SET_PICKLIST = 'SET_PICKLIST'
+export const BUTTON_PRESS = 'BUTTON_PRESS'
