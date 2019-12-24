@@ -7,6 +7,7 @@ export const fractalUpdate = (data, getReduxState, objStore) => {
   if (objStore.setup && data && data.id && getReduxState) {
     switch (data.id) {
       case ui.SLIDER_MAX_ITERATIONS:
+      case ui.SLIDER_MIN_PX:
       case ui.SLIDER_SCALE_1_1:
       case ui.SLIDER_ANGLE_1_1:
       case ui.SLIDER_SCALE_1_2:
@@ -14,6 +15,16 @@ export const fractalUpdate = (data, getReduxState, objStore) => {
       case ui.SLIDER_SCALE_START:
       case ui.SLIDER_ANGLE_START:
         setupFractal(objStore, getReduxState)
+        break
+
+      case ui.SLIDER_CANVAS_X:
+        objStore.canvas.elt.width = data.value
+        // If canvas width changes, also need to
+        // reset starting x-coord of fractal
+        setupFractal(objStore, getReduxState)
+        break
+      case ui.SLIDER_CANVAS_Y:
+        objStore.canvas.elt.height = data.value
         break
 
       default:

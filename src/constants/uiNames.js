@@ -6,19 +6,38 @@ export const TYPE_SLIDER = 'TYPE_SLIDER'
 export const panelSetup = {}
 
 export const PANEL_MAIN = 'PANEL_MAIN'
-export const SLIDER_ANIMATION_RATE = 'SLIDER_ANIMATION_RATE'
 export const SLIDER_MAX_ITERATIONS = 'SLIDER_MAX_ITERATIONS'
+export const SLIDER_LINE_WIDTH = 'SLIDER_LINE_WIDTH'
+export const SLIDER_LINE_EXP = 'SLIDER_LINE_EXP'
+export const SLIDER_MIN_PX = 'SLIDER_MIN_PX'
+export const SLIDER_MAX_MS = 'SLIDER_MAX_MS'
+export const SLIDER_MAX_COUNT = 'SLIDER_MAX_COUNT'
 panelSetup[PANEL_MAIN] = [
   'Main Controls',
-  SLIDER_ANIMATION_RATE,
   SLIDER_MAX_ITERATIONS,
+  SLIDER_LINE_WIDTH,
+  SLIDER_LINE_EXP,
+  SLIDER_MIN_PX,
+  SLIDER_MAX_MS,
+  SLIDER_MAX_COUNT,
+]
+
+export const PANEL_CANVAS = 'PANEL_CANVAS'
+export const SLIDER_ANIMATION_RATE = 'SLIDER_ANIMATION_RATE'
+export const SLIDER_CANVAS_X = 'SLIDER_CANVAS_X'
+export const SLIDER_CANVAS_Y = 'SLIDER_CANVAS_Y'
+panelSetup[PANEL_CANVAS] = [
+  'Canvas',
+  SLIDER_ANIMATION_RATE,
+  SLIDER_CANVAS_X,
+  SLIDER_CANVAS_Y,
 ]
 
 export const PANEL_ITERATION_0 = 'PANEL_ITERATION_0'
 export const SLIDER_SCALE_START = 'SLIDER_SCALE_START'
 export const SLIDER_ANGLE_START = 'SLIDER_ANGLE_START'
 panelSetup[PANEL_ITERATION_0] = [
-  'Start',
+  'Tree Trunk',
   SLIDER_SCALE_START,
   SLIDER_ANGLE_START,
 ]
@@ -27,7 +46,7 @@ export const PANEL_F1_C1 = 'PANEL_F1_C1'
 export const SLIDER_SCALE_1_1 = 'SLIDER_SCALE_1_1'
 export const SLIDER_ANGLE_1_1 = 'SLIDER_ANGLE_1_1'
 panelSetup[PANEL_F1_C1] = [
-  'Child 1',
+  'Branch 1, Child 1',
   SLIDER_SCALE_1_1,
   SLIDER_ANGLE_1_1,
 ]
@@ -36,7 +55,7 @@ export const PANEL_F1_C2 = 'PANEL_F1_C2'
 export const SLIDER_SCALE_1_2 = 'SLIDER_SCALE_1_2'
 export const SLIDER_ANGLE_1_2 = 'SLIDER_ANGLE_1_2'
 panelSetup[PANEL_F1_C2] = [
-  'Child 2',
+  'Branch 1, Child 2',
   SLIDER_SCALE_1_2,
   SLIDER_ANGLE_1_2,
 ]
