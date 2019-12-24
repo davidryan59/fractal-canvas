@@ -10,89 +10,28 @@ export const getInitialButtonsState = () => []
 
 export const getInitialPicklistsState = () => []
 
-export const getInitialSlidersState = () => [
-  {
-    id: ui.SLIDER_ANIMATION_RATE,
-    type: ui.TYPE_SLIDER,
-    label: 'Animation Rate',
-    min: '0',
-    step: '1',
-    max: '9',
-    value: '5',
-    len: 2,
-    displayFn: map.MAP_FRAME_RATES,
-    unit: 'Hz',
-  },
-  {
-    id: ui.SLIDER_MAX_ITERATIONS,
-    type: ui.TYPE_SLIDER,
-    label: 'Max Iterations',
-    min: '0',
-    step: '1',
-    max: '16',
-    value: '8',
-    len: 2
-  },
-  {
-    id: ui.SLIDER_SCALE_START,
-    type: ui.TYPE_SLIDER,
-    label: 'Size',
-    min: '0',
-    step: '10',
-    max: '990',
-    value: '80',
-    len: 3,
-    unit: 'px'
-  },
-  {
-    id: ui.SLIDER_ANGLE_START,
-    type: ui.TYPE_SLIDER,
-    label: 'Angle',
-    min: '-180',
-    step: '1',
-    max: '180',
-    value: '8',
-    len: 4
-  },
-  {
-    id: ui.SLIDER_SCALE_1_1,
-    type: ui.TYPE_SLIDER,
-    label: 'Scale',
-    min: '0.01',
-    step: '0.01',
-    max: '0.99',
-    value: '0.85',
-    len: 4
-  },
-  {
-    id: ui.SLIDER_ANGLE_1_1,
-    type: ui.TYPE_SLIDER,
-    label: 'Angle',
-    min: '-180',
-    step: '1',
-    max: '180',
-    value: '20',
-    len: 4
-  },
-  {
-    id: ui.SLIDER_SCALE_1_2,
-    type: ui.TYPE_SLIDER,
-    label: 'Scale',
-    min: '0.01',
-    step: '0.01',
-    max: '0.99',
-    value: '0.8',
-    len: 4
-  },
-  {
-    id: ui.SLIDER_ANGLE_1_2,
-    type: ui.TYPE_SLIDER,
-    label: 'Angle',
-    min: '-180',
-    step: '1',
-    max: '180',
-    value: '-37',
-    len: 4
-  },
+// Mandatory id ... len
+// Optional: unit ... bgColour
+export const makeSliderState =
+  (id, label, min, step, max, value, len, unit, displayFn, bgColour) =>
+    ({
+      type: ui.TYPE_SLIDER,
+      id, label, min, step, max, value, len, unit, displayFn, bgColour
+    })
 
+export const makeAngleSliderState = (id, value) =>
+    makeSliderState(id, 'Angle', -450, 0.1, 450, value, 6, '°')
+
+export const makeScaleSliderState = (id, value) =>
+    makeSliderState(id, 'Scale', 0, 0.001, 0.999, value, 5)
+
+export const getInitialSlidersState = () => [
+  makeSliderState(ui.SLIDER_ANIMATION_RATE, 'Animation Rate', 0, 1, 9, 3, 2, 'Hz', map.MAP_FRAME_RATES),
+  makeSliderState(ui.SLIDER_MAX_ITERATIONS, 'Max Iterations', 0, 1, 16, 8, 2),
+  makeSliderState(ui.SLIDER_SCALE_START, 'Size', 0, 1, 990, 80, 3, 'px'),
+  makeAngleSliderState(ui.SLIDER_ANGLE_START, 8),
+  makeScaleSliderState(ui.SLIDER_SCALE_1_1, 0.80),
+  makeAngleSliderState(ui.SLIDER_ANGLE_1_1, -37),
+  makeScaleSliderState(ui.SLIDER_SCALE_1_2, 0.85),
+  makeAngleSliderState(ui.SLIDER_ANGLE_1_2, 20),
 ]
