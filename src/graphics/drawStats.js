@@ -12,7 +12,7 @@ const drawStats = (objStore, getReduxState) => {
   const sizeCurrent = objStore.stats.sizeCurrent
   const sizeAll = objStore.stats.sizeAll
   const calcTimeUs = Math.round(1000 * (objStore.stats.timeIterationEnd - objStore.stats.timeIterationStart))
-  const drawTimeUs = Math.round(1000 * (objStore.stats.timeDrawCanvasEnd - objStore.stats.timeDrawCanvasStart))
+  const drawTimeUs = Math.round(1000 * (objStore.stats.timeDrawFractalEnd - objStore.stats.timeDrawFractalStart))
 
   const colOK = '#6F6'
   const colBad = '#F66'

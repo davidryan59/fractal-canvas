@@ -5,8 +5,8 @@ const setupStats = (objStore, getReduxState) => {
   objStore.stats.sizeAll = 0
   objStore.stats.timeIterationStart = 0
   objStore.stats.timeIterationEnd = 0
-  objStore.stats.timeDrawCanvasStart = 0
-  objStore.stats.timeDrawCanvasEnd = 0
+  objStore.stats.timeDrawFractalStart = 0
+  objStore.stats.timeDrawFractalEnd = 0
 }
 
 export default setupStats

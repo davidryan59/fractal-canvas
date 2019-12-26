@@ -20,9 +20,9 @@ const drawFractal = (objStore, getReduxState) => {
   const items = objStore.fractal.current
 
   // General setup
+  objStore.stats.timeDrawFractalStart = performance.now()
   const yTransform = objStore.canvas.elt.height
   ctx.lineCap = 'round'
-
   // Iterate over items to draw
   const len = items.length
   const rLen = (len <= 1) ? 1 : 1 / (len - 1)
@@ -50,6 +50,7 @@ const drawFractal = (objStore, getReduxState) => {
     ctx.lineTo(x + xd, yTransform - (y + yd));
     ctx.stroke()
   }
+  objStore.stats.timeDrawFractalEnd = performance.now()
 }
 
 export default drawFractal
