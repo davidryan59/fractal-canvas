@@ -7,10 +7,21 @@ const setupFractal = (objStore, getReduxState) => {
   const reduxState = getReduxState()
   const scale_start = getSliderDisplayValue(reduxState, ui.SLIDER_SCALE_START)
   const angle_start = getSliderDisplayValue(reduxState, ui.SLIDER_ANGLE_START)
+  const ratio_b2_b1 = getSliderDisplayValue(reduxState, ui.SLIDER_RATIO_B2_B1)
+
+  const id_1_1 = getSliderDisplayValue(reduxState, ui.SLIDER_ID_1_1)
   const scale_1_1 = getSliderDisplayValue(reduxState, ui.SLIDER_SCALE_1_1)
   const angle_1_1 = getSliderDisplayValue(reduxState, ui.SLIDER_ANGLE_1_1)
+  const id_1_2 = getSliderDisplayValue(reduxState, ui.SLIDER_ID_1_2)
   const scale_1_2 = getSliderDisplayValue(reduxState, ui.SLIDER_SCALE_1_2)
   const angle_1_2 = getSliderDisplayValue(reduxState, ui.SLIDER_ANGLE_1_2)
+
+  const id_2_1 = getSliderDisplayValue(reduxState, ui.SLIDER_ID_2_1)
+  const scale_2_1 = getSliderDisplayValue(reduxState, ui.SLIDER_SCALE_2_1)
+  const angle_2_1 = getSliderDisplayValue(reduxState, ui.SLIDER_ANGLE_2_1)
+  const id_2_2 = getSliderDisplayValue(reduxState, ui.SLIDER_ID_2_2)
+  const scale_2_2 = getSliderDisplayValue(reduxState, ui.SLIDER_SCALE_2_2)
+  const angle_2_2 = getSliderDisplayValue(reduxState, ui.SLIDER_ANGLE_2_2)
 
   // Setup fractal area of objStore
   objStore.fractal = {}
@@ -35,16 +46,16 @@ const setupFractal = (objStore, getReduxState) => {
     },
     {
       id: 1,
-      name: 'tree',
+      name: 'branch 1',
       children: [
         {
-          id: 1,
+          id: id_1_1,
           vector: [0, 1],
           scale: scale_1_1,
           angleDeg: angle_1_1
         },
         {
-          id: 1,
+          id: id_1_2,
           vector: [0, 1],
           scale: scale_1_2,
           angleDeg: angle_1_2
@@ -56,7 +67,31 @@ const setupFractal = (objStore, getReduxState) => {
           angleDeg: 0
         }
       ]
-    }
+    },
+    {
+      id: 2,
+      name: 'branch 2',
+      children: [
+        {
+          id: id_2_1,
+          vector: [0, ratio_b2_b1],
+          scale: scale_2_1,
+          angleDeg: angle_2_1
+        },
+        {
+          id: id_2_2,
+          vector: [0, ratio_b2_b1],
+          scale: scale_2_2,
+          angleDeg: angle_2_2
+        },
+        {
+          id: 0,
+          vector: [0, 0],
+          scale: ratio_b2_b1,
+          angleDeg: 0
+        }
+      ]
+    },
   ]
 }
 

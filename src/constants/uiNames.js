@@ -7,19 +7,19 @@ export const panelSetup = {}
 
 export const PANEL_MAIN = 'PANEL_MAIN'
 export const SLIDER_MAX_ITERATIONS = 'SLIDER_MAX_ITERATIONS'
+export const SLIDER_MIN_PX = 'SLIDER_MIN_PX'
+export const SLIDER_MAX_COUNT = 'SLIDER_MAX_COUNT'
+export const SLIDER_MAX_MS = 'SLIDER_MAX_MS'
 export const SLIDER_LINE_WIDTH = 'SLIDER_LINE_WIDTH'
 export const SLIDER_LINE_EXP = 'SLIDER_LINE_EXP'
-export const SLIDER_MIN_PX = 'SLIDER_MIN_PX'
-export const SLIDER_MAX_MS = 'SLIDER_MAX_MS'
-export const SLIDER_MAX_COUNT = 'SLIDER_MAX_COUNT'
 panelSetup[PANEL_MAIN] = [
   'Main Controls',
   SLIDER_MAX_ITERATIONS,
+  SLIDER_MIN_PX,
+  SLIDER_MAX_COUNT,
+  SLIDER_MAX_MS,
   SLIDER_LINE_WIDTH,
   SLIDER_LINE_EXP,
-  SLIDER_MIN_PX,
-  SLIDER_MAX_MS,
-  SLIDER_MAX_COUNT,
 ]
 
 export const PANEL_CANVAS = 'PANEL_CANVAS'
@@ -33,29 +33,57 @@ panelSetup[PANEL_CANVAS] = [
   SLIDER_CANVAS_Y,
 ]
 
-export const PANEL_ITERATION_0 = 'PANEL_ITERATION_0'
+export const PANEL_TRUNK = 'PANEL_TRUNK'
 export const SLIDER_SCALE_START = 'SLIDER_SCALE_START'
 export const SLIDER_ANGLE_START = 'SLIDER_ANGLE_START'
-panelSetup[PANEL_ITERATION_0] = [
+export const SLIDER_RATIO_B2_B1 = 'SLIDER_RATIO_B2_B1'
+panelSetup[PANEL_TRUNK] = [
   'Tree Trunk',
   SLIDER_SCALE_START,
   SLIDER_ANGLE_START,
+  SLIDER_RATIO_B2_B1,
 ]
 
 export const PANEL_F1_C1 = 'PANEL_F1_C1'
+export const SLIDER_ID_1_1 = 'SLIDER_ID_1_1'
 export const SLIDER_SCALE_1_1 = 'SLIDER_SCALE_1_1'
 export const SLIDER_ANGLE_1_1 = 'SLIDER_ANGLE_1_1'
 panelSetup[PANEL_F1_C1] = [
   'Branch 1, Child 1',
+  SLIDER_ID_1_1,
   SLIDER_SCALE_1_1,
   SLIDER_ANGLE_1_1,
 ]
 
 export const PANEL_F1_C2 = 'PANEL_F1_C2'
+export const SLIDER_ID_1_2 = 'SLIDER_ID_1_2'
 export const SLIDER_SCALE_1_2 = 'SLIDER_SCALE_1_2'
 export const SLIDER_ANGLE_1_2 = 'SLIDER_ANGLE_1_2'
 panelSetup[PANEL_F1_C2] = [
   'Branch 1, Child 2',
+  SLIDER_ID_1_2,
   SLIDER_SCALE_1_2,
   SLIDER_ANGLE_1_2,
+]
+
+export const PANEL_F2_C1 = 'PANEL_F2_C1'
+export const SLIDER_ID_2_1 = 'SLIDER_ID_2_1'
+export const SLIDER_SCALE_2_1 = 'SLIDER_SCALE_2_1'
+export const SLIDER_ANGLE_2_1 = 'SLIDER_ANGLE_2_1'
+panelSetup[PANEL_F2_C1] = [
+  'Branch 2, Child 1',
+  SLIDER_ID_2_1,
+  SLIDER_SCALE_2_1,
+  SLIDER_ANGLE_2_1,
+]
+
+export const PANEL_F2_C2 = 'PANEL_F2_C2'
+export const SLIDER_ID_2_2 = 'SLIDER_ID_2_2'
+export const SLIDER_SCALE_2_2 = 'SLIDER_SCALE_2_2'
+export const SLIDER_ANGLE_2_2 = 'SLIDER_ANGLE_2_2'
+panelSetup[PANEL_F2_C2] = [
+  'Branch 2, Child 2',
+  SLIDER_ID_2_2,
+  SLIDER_SCALE_2_2,
+  SLIDER_ANGLE_2_2,
 ]
