@@ -29,10 +29,12 @@ const iterateFractalOnce = (objStore, getReduxState) => {
         if (0 < newScale) {
           // Setup newItem
           const newItem = {}
+          const branchAxisReflectFactor = (item.reflect) ? -1 : 1
           // Some simple calcs
           newItem.id = childRule.id
           newItem.scale = newScale
-          newItem.angleDeg = item.angleDeg + childRule.angleDeg
+          newItem.reflect = item.reflect ^ childRule.reflect  // XOR
+          newItem.angleDeg = item.angleDeg + branchAxisReflectFactor * childRule.angleDeg
           // Weight currently used to make lineWidth larger on certain children
           const newWeight = childRule.weight || item.weight
           if (newWeight) newItem.weight = newWeight
@@ -43,8 +45,9 @@ const iterateFractalOnce = (objStore, getReduxState) => {
           const a = item.angleDeg * degreesToRadians
           const u = childRule.vector[0]
           const v = childRule.vector[1]
-          const x2 = x1 + r * (u * cos(a) + v * sin(a))
-          const y2 = y1 + r * (- u * sin(a) + v * cos(a))
+          // Matrix is rotation (factor = 1) or reflection (factor = -1)
+          const x2 = x1 + r * (u * branchAxisReflectFactor *  cos(a) + v * sin(a))
+          const y2 = y1 + r * (u * branchAxisReflectFactor * -sin(a) + v * cos(a))
           newItem.vector = [x2, y2]
           result.push(newItem)
         }

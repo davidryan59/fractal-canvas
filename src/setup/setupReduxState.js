@@ -7,11 +7,32 @@ export const getInitialWindowState = () => ({
   height: window.innerHeight
 })
 
-export const getInitialButtonsState = () => []
 
+// PICKLISTS
 export const getInitialPicklistsState = () => []
 
 
+// BUTTONS / TOGGLES
+export const makeToggleState =
+  (id, labelInactive, labelActive, isActive, widthPx) =>
+    ({
+      type: ui.TYPE_TOGGLE,
+      id, labelInactive, labelActive, isActive, widthPx
+    })
+
+export const makeReflectToggleState = id =>
+    makeToggleState(id, 'Normal', 'REFLECT L/R', false, 140)
+
+export const getInitialButtonsState = () => [
+  makeReflectToggleState(ui.TOGGLE_REFLECT_TRUNK),
+  makeReflectToggleState(ui.TOGGLE_REFLECT_1_1),
+  makeReflectToggleState(ui.TOGGLE_REFLECT_1_2),
+  makeReflectToggleState(ui.TOGGLE_REFLECT_2_1),
+  makeReflectToggleState(ui.TOGGLE_REFLECT_2_2),
+]
+
+
+// SLIDERS / INPUT RANGES
 // Mandatory id ... len
 // Optional: unit ... bgColour
 export const makeSliderState =

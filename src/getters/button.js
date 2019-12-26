@@ -9,5 +9,5 @@ export const getButtonByName = (state, buttonId) => {
 
 export const buttonActive = (state, buttonId) => {
   const button = getButtonByName(state, buttonId)
-  return (button) ? button.isActive : false
+  return (button) ? !!button.isActive : false
 }
