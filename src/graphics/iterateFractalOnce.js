@@ -27,12 +27,16 @@ const iterateFractalOnce = (objStore, getReduxState) => {
         // Discard any items of zero scale
         // e.g. rule had zero scale
         if (0 < newScale) {
+          // Setup newItem
           const newItem = {}
-          // 3 out of 4 calcs are straightforward
+          // Some simple calcs
           newItem.id = childRule.id
-          newItem.angleDeg = item.angleDeg + childRule.angleDeg
           newItem.scale = newScale
-          // 1 out of 4 (vector) slightly more complex
+          newItem.angleDeg = item.angleDeg + childRule.angleDeg
+          // Weight currently used to make lineWidth larger on certain children
+          const newWeight = childRule.weight || item.weight
+          if (newWeight) newItem.weight = newWeight
+          // Vector slightly more complex
           const x1 = item.vector[0]
           const y1 = item.vector[1]
           const r = item.scale

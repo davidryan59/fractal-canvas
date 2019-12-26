@@ -88,7 +88,8 @@ const setupFractal = (objStore, getReduxState) => {
           id: 0,
           vector: [0, 0],
           scale: ratio_b2_b1,
-          angleDeg: 0
+          angleDeg: 0,
+          weight: (ratio_b2_b1 > 0) ? 1 / ratio_b2_b1 : 0
         }
       ]
     },

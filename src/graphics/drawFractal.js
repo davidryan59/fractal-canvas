@@ -32,18 +32,19 @@ const drawFractal = (objStore, getReduxState) => {
     const id = item.id
     const x = item.vector[0]
     const y = item.vector[1]
-    const radius = item.scale
+    const scale = item.scale
+    const weight = item.weight || 1
     const angleRadians = item.angleDeg * degreesToRadians
-    const xd = radius * Math.sin(angleRadians)
-    const yd = radius * Math.cos(angleRadians)
+    const xd = scale * Math.sin(angleRadians)
+    const yd = scale * Math.cos(angleRadians)
 
     // Plot coords, transforming to have 0, 0 in top left
     const posFract = rLen * i
-    const sizeFract = Math.max(0, Math.min(1, 0.5 + Math.log10(radius/minScalePx)))
+    const sizeFract = Math.max(0, Math.min(1, 0.5 + Math.log10(scale/minScalePx)))
     ctx.strokeStyle = (id === 0)
       ? `rgb(${255 - 255 * posFract}, 0, ${255 * posFract})`    // Branch
       : `rgb(${255 * sizeFract}, ${255 - 64 * sizeFract}, 0)`   // Leaf
-    ctx.lineWidth = lineWidthPx * (0.01 * radius) ** -lineWidthExp
+    ctx.lineWidth = lineWidthPx * (0.01 * scale * weight) ** -lineWidthExp
     ctx.beginPath();
     ctx.moveTo(x, yTransform - y);
     ctx.lineTo(x + xd, yTransform - (y + yd));
