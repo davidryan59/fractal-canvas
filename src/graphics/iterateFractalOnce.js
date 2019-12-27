@@ -10,6 +10,11 @@ const iterateFractalOnce = (objStore, getReduxState) => {
   const reduxState = getReduxState()
   const minScalePx = getSliderDisplayValue(reduxState, ui.SLIDER_MIN_PX)
 
+  // Control iteration
+  objStore.stats.currentIteration++
+  let finishedIterating = (objStore.stats.maxIterations <= objStore.stats.currentIteration)
+  let aChildGenerated = false
+
   // Calculate
   const items = objStore.fractal.current
   const rules = objStore.fractal.rules
@@ -18,7 +23,7 @@ const iterateFractalOnce = (objStore, getReduxState) => {
     const item = items[i]
     const parentId = item.id
     const itemRules = rules[parentId]
-    if (item.scale < minScalePx) {
+    if (item.scale < minScalePx || item.stopIterating) {
       result.push(item)
     } else {
       for (let j=0; j<itemRules.children.length; j++) {
@@ -28,10 +33,12 @@ const iterateFractalOnce = (objStore, getReduxState) => {
         // e.g. rule had zero scale
         if (0 < newScale) {
           // Setup newItem
+          aChildGenerated = true
           const newItem = {}
           const branchAxisReflectFactor = (item.reflect) ? -1 : 1
           // Some simple calcs
           newItem.id = childRule.id
+          newItem.stopIterating = item.stopIterating || childRule.stopIterating
           newItem.scale = newScale
           newItem.reflect = item.reflect ^ childRule.reflect  // XOR
           newItem.angleDeg = item.angleDeg + branchAxisReflectFactor * childRule.angleDeg
@@ -56,6 +63,8 @@ const iterateFractalOnce = (objStore, getReduxState) => {
   }
   objStore.fractal.current = result
   objStore.stats.sizeAll += result.length
+  finishedIterating = finishedIterating || !aChildGenerated
+  return finishedIterating
 }
 
 export default iterateFractalOnce

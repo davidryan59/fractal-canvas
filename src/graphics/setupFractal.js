@@ -48,6 +48,7 @@ const setupFractal = (objStore, getReduxState) => {
           vector: [0, 0],
           scale: 1,
           angleDeg: 0,
+          stopIterating: true,
         }
       ]
     },
