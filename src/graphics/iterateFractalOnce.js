@@ -1,14 +1,14 @@
 import * as ui from '../constants/uiNames'
 import { getSliderDisplayValue } from '../getters/slider'
+import { sin, cos, degreesToRadians, loopsBetweenTimingChecks } from '../constants/general'
 
-const cos = Math.cos
-const sin = Math.sin
-const degreesToRadians = Math.PI / 180
 
 const iterateFractalOnce = (objStore, getReduxState) => {
   // Get from stores
   const reduxState = getReduxState()
   const minScalePx = getSliderDisplayValue(reduxState, ui.SLIDER_MIN_PX)
+  const maxCalcTimeMs = 0.001 * getSliderDisplayValue(reduxState, ui.SLIDER_MAX_CALC_TIME_US)
+  const maxCount = getSliderDisplayValue(reduxState, ui.SLIDER_MAX_COUNT)
 
   // Control iteration
   objStore.stats.currentIteration++
@@ -18,14 +18,28 @@ const iterateFractalOnce = (objStore, getReduxState) => {
   // Calculate
   const items = objStore.fractal.current
   const rules = objStore.fractal.rules
-  const result = []
+  let result = []
   for (let i=0; i<items.length; i++) {
+    // Periodically check various maximum have not been exceeded
+    if (i % loopsBetweenTimingChecks === 0) {
+      const calcTimeExceeded = (maxCalcTimeMs < performance.now() - objStore.stats.timeIterationStart)
+      const sizeExceeded = (maxCount < (items.length - i) + result.length)
+      if (calcTimeExceeded || sizeExceeded) {
+        // Break loop early. Add unprocessed items (from i onwards) back into result.
+        finishedIterating = true
+        result = result.concat(items.slice(i))
+        break
+      }
+    }
+    // Take ith item in array
     const item = items[i]
     const parentId = item.id
     const itemRules = rules[parentId]
     if (item.scale < minScalePx || item.stopIterating) {
+      // Do not iterate item
       result.push(item)
     } else {
+      // Iterate item
       for (let j=0; j<itemRules.children.length; j++) {
         const childRule = itemRules.children[j]
         const newScale = item.scale * childRule.scale

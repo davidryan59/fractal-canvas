@@ -8,6 +8,9 @@ export const fractalUpdate = (data, getReduxState, objStore) => {
     switch (data.id) {
       case ui.SLIDER_MAX_ITERATIONS:
       case ui.SLIDER_MIN_PX:
+      case ui.SLIDER_MAX_COUNT:
+      case ui.SLIDER_MAX_CALC_TIME_US:
+      case ui.SLIDER_MAX_DRAW_TIME_US:
       case ui.SLIDER_SCALE_START:
       case ui.SLIDER_ANGLE_START:
       case ui.TOGGLE_REFLECT_TRUNK:

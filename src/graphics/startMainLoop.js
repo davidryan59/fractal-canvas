@@ -7,7 +7,11 @@ const startMainLoop = (objStore, getReduxState) => {
   let prevTime = 0
   const mainLoop = timeLoopStart => {
     // General items
+
+
     window.requestAnimationFrame(mainLoop)
+
+
     const reduxState = getReduxState()
     // Canvas animation items
     const rateHz = getSliderDisplayValue(reduxState, ui.SLIDER_ANIMATION_RATE)

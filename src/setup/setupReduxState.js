@@ -53,10 +53,11 @@ export const makeScaleSliderState = (id, value) =>
 
 
 export const getInitialSlidersState = () => [
-  makeSliderState(ui.SLIDER_MAX_ITERATIONS, 'Max Iterations', 0, 1, 16, 10, 2),
+  makeSliderState(ui.SLIDER_MAX_ITERATIONS, 'Max Iterations', 0, 1, 32, 12, 2),
   makeSliderState(ui.SLIDER_MIN_PX, 'Min Iteration Size', -3, 0.02, 9.9, 1, 5, 'px', map.MAP_EXP_2),
-  makeSliderState(ui.SLIDER_MAX_COUNT, 'Max Count', 0, 0.1, 19.9, 13, 6, '', map.MAP_EXP_2_ROUND),
-  makeSliderState(ui.SLIDER_MAX_MS, 'Max Calc Time', 0, 0.1, 99.9, 10, 4, 'ms'),
+  makeSliderState(ui.SLIDER_MAX_COUNT,            'Max Count', 0, 0.1, 19.9, 14, 6, '', map.MAP_EXP_2_ROUND),
+  makeSliderState(ui.SLIDER_MAX_CALC_TIME_US, 'Max Calc Time', 0, 0.1, 19.9, 12, 6, 'μs', map.MAP_EXP_2_ROUND),
+  makeSliderState(ui.SLIDER_MAX_DRAW_TIME_US, 'Max Draw Time', 0, 0.1, 19.9, 14, 6, 'μs', map.MAP_EXP_2_ROUND),
   makeSliderState(ui.SLIDER_LINE_WIDTH, 'Line Width at 100px', 0.2, 0.2, 20, 8, 4, 'px'),
   makeSliderState(ui.SLIDER_LINE_EXP, 'Line Width Exponent', -2, 0.01, -0.01, -0.5, 5),
 
