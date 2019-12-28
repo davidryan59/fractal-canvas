@@ -10,7 +10,8 @@ export const getActionObject = (type, data) => ({
 let nextThunkId = 0
 export const getThunk = (type, data) => (dispatch, getState, objStore) => {
   const theData = { thunkId: nextThunkId++, ...data }
-  console.log(theData)
-  dispatch(getActionObject(type, theData))
-  fractalUpdate(data, getState, objStore)
+  const theAction = getActionObject(type, theData)
+  console.log(theAction)
+  dispatch(theAction)
+  fractalUpdate(theAction, getState, objStore)
 }

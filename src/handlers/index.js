@@ -1,23 +1,18 @@
-import { getActionObject } from '../actions'
+import { getThunk } from '../actions'
 import * as gen from '../constants/general'
 import { WINDOW_RESIZE } from '../constants/actionTypes'
 
 
 export const windowResizeHandler = (event, reduxStore) => {
-  const windowState = reduxStore.getState().window
-  const dispatch = reduxStore.dispatch
-
+  // Only fire action if window size has changed by minimum amount
+  const reduxState = reduxStore.getState()
+  const oldWidth = reduxState.window.width
+  const oldHeight = reduxState.window.height
   const newWidth = event.target.innerWidth
   const newHeight = event.target.innerHeight
-  const oldWidth = windowState.width
-  const oldHeight = windowState.height
-
   const diffWidth = Math.abs(newWidth - oldWidth)
   const diffHeight = Math.abs(newHeight - oldHeight)
   const windowSizeChangeDiff = Math.max(diffWidth, diffHeight)
-
-  // Only dispatch action if change is more than a specific amount,
-  // to avoid too many window resize actions
   if (gen.windowSizeChangeMinDiff <= windowSizeChangeDiff)
-    dispatch(getActionObject(WINDOW_RESIZE, {width:newWidth, height:newHeight}))
+    reduxStore.dispatch(getThunk(WINDOW_RESIZE, {width:newWidth, height:newHeight}))
 }

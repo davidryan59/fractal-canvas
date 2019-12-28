@@ -7,9 +7,9 @@ import TextC from './TextC'
 
 import * as ui from '../constants/uiNames'
 
-const Panel = ({ items, innerClassNames }) => (
-  <div className={`${innerClassNames}`}>
-    {items.map(item =>
+const Panel = props => (
+  <div className={props.innerClassNames}>
+    {props.items.map(item =>
       (item.type === ui.TYPE_TOGGLE)
         ? <ButtonC key={item.id} button={item} />
         : (item.type === ui.TYPE_PICKLIST)

@@ -1,3 +1,4 @@
+import { initialCanvasHeight, getCanvasWidthFromWindowWidth } from '../constants/general'
 import * as map from '../general/mappings'
 import * as ui from '../constants/uiNames'
 
@@ -5,6 +6,12 @@ import * as ui from '../constants/uiNames'
 export const getInitialWindowState = () => ({
   width: window.innerWidth,
   height: window.innerHeight
+})
+
+
+export const getInitialCanvasState = () => ({
+  width: getCanvasWidthFromWindowWidth(window.innerWidth),
+  height: initialCanvasHeight
 })
 
 
@@ -62,8 +69,7 @@ export const getInitialSlidersState = () => [
   makeSliderState(ui.SLIDER_LINE_EXP, 'Line Width Exponent', -2, 0.01, -0.01, -0.5, 5),
 
   makeSliderState(ui.SLIDER_ANIMATION_RATE, 'Animation Rate', 0, 1, 9, 3, 2, 'Hz', map.MAP_FRAME_RATES),
-  makeSliderState(ui.SLIDER_CANVAS_X, 'Image X', 60, 6, 1920, 0.9 * document.body.clientWidth, 4, 'px'),
-  makeSliderState(ui.SLIDER_CANVAS_Y, 'Image Y', 60, 6, 1200, 600, 4, 'px'),
+  makeSliderState(ui.SLIDER_CANVAS_Y, 'Height', 60, 6, 1200, initialCanvasHeight, 4, 'px'),
 
   makeSliderState(ui.SLIDER_START_X, 'X', -990, 1, 990, 0, 4, 'px'),
   makeSliderState(ui.SLIDER_START_Y, 'Y', -990, 1, 990, 0, 4, 'px'),
