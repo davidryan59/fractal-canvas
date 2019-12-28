@@ -24,7 +24,7 @@ export const makeReflectToggleState = id =>
     makeToggleState(id, 'Normal', 'REFLECT L/R', false, 140)
 
 export const getInitialButtonsState = () => [
-  makeReflectToggleState(ui.TOGGLE_REFLECT_TRUNK),
+  makeReflectToggleState(ui.TOGGLE_REFLECT_START),
   makeReflectToggleState(ui.TOGGLE_REFLECT_1_1),
   makeReflectToggleState(ui.TOGGLE_REFLECT_1_2),
   makeReflectToggleState(ui.TOGGLE_REFLECT_2_1),
@@ -65,6 +65,8 @@ export const getInitialSlidersState = () => [
   makeSliderState(ui.SLIDER_CANVAS_X, 'Image X', 60, 6, 1920, 0.9 * document.body.clientWidth, 4, 'px'),
   makeSliderState(ui.SLIDER_CANVAS_Y, 'Image Y', 60, 6, 1200, 600, 4, 'px'),
 
+  makeSliderState(ui.SLIDER_START_X, 'X', -990, 1, 990, 0, 4, 'px'),
+  makeSliderState(ui.SLIDER_START_Y, 'Y', -990, 1, 990, 0, 4, 'px'),
   makeSliderState(ui.SLIDER_SCALE_START, 'Size', 0, 1, 990, 80, 3, 'px'),
   makeAngleSliderState(ui.SLIDER_ANGLE_START, 8),
   makeSliderState(ui.SLIDER_RATIO_B2_B1, 'b2 / b1', 0, 0.01, 1, 1, 4),

@@ -11,9 +11,11 @@ export const fractalUpdate = (data, getReduxState, objStore) => {
       case ui.SLIDER_MAX_COUNT:
       case ui.SLIDER_MAX_CALC_TIME_US:
       case ui.SLIDER_MAX_DRAW_TIME_US:
+      case ui.SLIDER_START_X:
+      case ui.SLIDER_START_Y:
       case ui.SLIDER_SCALE_START:
       case ui.SLIDER_ANGLE_START:
-      case ui.TOGGLE_REFLECT_TRUNK:
+      case ui.TOGGLE_REFLECT_START:
       case ui.SLIDER_RATIO_B2_B1:
       case ui.SLIDER_ID_1_1:
       case ui.SLIDER_SCALE_1_1:

@@ -14,7 +14,7 @@ const App = props =>
       <CanvasC />
     </div>
     <div className='flex justifyStart'>
-      <PanelC id={ui.PANEL_TRUNK} innerClassNames='greyBack' />
+      <PanelC id={ui.PANEL_START} innerClassNames='greyBack' />
       <PanelC id={ui.PANEL_F1_C1} innerClassNames='greyBack' />
       <PanelC id={ui.PANEL_F1_C2} innerClassNames='greyBack' />
       <PanelC id={ui.PANEL_F2_C1} innerClassNames='greyBack' />

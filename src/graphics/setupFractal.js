@@ -6,10 +6,12 @@ const setupFractal = (objStore, getReduxState) => {
   console.log("Refreshing fractal setup")
   // Get relevant parameters from reduxState
   const reduxState = getReduxState()
+  const start_x = getSliderDisplayValue(reduxState, ui.SLIDER_START_X)
+  const start_y = getSliderDisplayValue(reduxState, ui.SLIDER_START_Y)
   const scale_start = getSliderDisplayValue(reduxState, ui.SLIDER_SCALE_START)
   const angle_start = getSliderDisplayValue(reduxState, ui.SLIDER_ANGLE_START)
   const ratio_b2_b1 = getSliderDisplayValue(reduxState, ui.SLIDER_RATIO_B2_B1)
-  const reflect_start = buttonActive(reduxState, ui.TOGGLE_REFLECT_TRUNK)
+  const reflect_start = buttonActive(reduxState, ui.TOGGLE_REFLECT_START)
 
   const id_1_1 = getSliderDisplayValue(reduxState, ui.SLIDER_ID_1_1)
   const scale_1_1 = getSliderDisplayValue(reduxState, ui.SLIDER_SCALE_1_1)
@@ -33,7 +35,7 @@ const setupFractal = (objStore, getReduxState) => {
   objStore.fractal = {}
   objStore.fractal.start = {
     id: 1,
-    vector: [Math.floor(0.5 * objStore.canvas.elt.width), 20],
+    vector: [Math.floor(0.5 * objStore.canvas.elt.width) + start_x, 20 + start_y],
     scale: scale_start,       // Will match to canvas
     angleDeg: angle_start,    // Should be pointing vertically up
     reflect: reflect_start,
