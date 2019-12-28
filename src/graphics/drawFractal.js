@@ -1,6 +1,6 @@
 import * as ui from '../constants/uiNames'
 import { getSliderDisplayValue } from '../getters/slider'
-import { sin, cos, degreesToRadians, loopsBetweenTimingChecks, warningRatio } from '../constants/general'
+import { sin, cos, degreesToRadians, loopsBetweenTimingChecks, drawWarnRatio } from '../constants/general'
 import iterateFractalFully from './iterateFractalFully'
 
 
@@ -22,20 +22,22 @@ const drawFractal = (objStore, getReduxState) => {
   objStore.stats.timeDrawFractalStart = performance.now()
   const yTransform = objStore.canvas.elt.height
   ctx.lineCap = 'round'
-  let useWarningColours = false
+  let brightness = 1
   // Iterate over items to draw
   const len = items.length
   const rLen = (len <= 1) ? 1 : 1 / (len - 1)
   for (let i=0; i<len; i++) {
+
     // Periodically check there is still time left
     if (i % loopsBetweenTimingChecks === 0) {
-      const drawTime = performance.now() - objStore.stats.timeDrawFractalStart
-      if (maxDrawTimeMs < drawTime) {
+      const drawRatio = (performance.now() - objStore.stats.timeDrawFractalStart) / maxDrawTimeMs
+      if (1 < drawRatio) {
         // Simply stop drawing...
         // ideally would draw earlier iterations quickly
         break
-      } else if (warningRatio * maxDrawTimeMs < drawTime) {
-        useWarningColours = true
+      } else if (drawWarnRatio < drawRatio) {
+        // Fade fractal brightness out as drawing starts to break
+        brightness = (1 - drawRatio) / (1 - drawWarnRatio)
       }
     }
 
@@ -54,16 +56,15 @@ const drawFractal = (objStore, getReduxState) => {
     // Plot coords, transforming to have 0, 0 in top left
     const posFract = rLen * i
     const sizeFract = Math.max(0, Math.min(1, 0.5 + Math.log10(scale/minScalePx)))
-    ctx.strokeStyle = (useWarningColours)
-      ? '#444'
-      : (id === 0)
-      ? `rgb(${255 - 255 * posFract}, 0, ${255 * posFract})`    // Branch
-      : `rgb(${255 * sizeFract}, ${255 - 64 * sizeFract}, 0)`   // Leaf
+    ctx.strokeStyle = (id === 0)
+      ? `rgb(${255 * brightness * (1 - posFract)}, 0, ${255 * brightness * posFract})`    // Branch
+      : `rgb(${255 * brightness * sizeFract}, ${255 * brightness * (1 - 0.25 * sizeFract)}, 0)`   // Leaf
     ctx.lineWidth = lineWidthPx * (0.01 * scale * weight) ** -lineWidthExp
     ctx.beginPath();
     ctx.moveTo(x, yTransform - y);
     ctx.lineTo(x + xd, yTransform - (y + yd));
     ctx.stroke()
+
   }
   objStore.stats.timeDrawFractalEnd = performance.now()
 }

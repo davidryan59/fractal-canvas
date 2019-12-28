@@ -5,8 +5,9 @@ export const windowSizeChangeMinDiff = 20
 // Don't check performance/timing every loop, skip this number of loops
 export const loopsBetweenTimingChecks = 10
 
-// Provide warnings when reached this proportion of limits
-export const warningRatio = 0.95
+// If draw time has used more than this proportion of time, start to warn user
+// typically by fading out the fractal
+export const drawWarnRatio = 0.9
 
 // Maths
 export const degreesToRadians = Math.PI / 180
