@@ -53,22 +53,20 @@ export const makeIdSliderState = (id, value) =>
     makeSliderState(id, 'Id', 1, 1, 2, value, 1)
 
 export const makeAngleSliderState = (id, value) =>
-    makeSliderState(id, 'Angle', -450, 0.1, 450, value, 6, '°')
+    makeSliderState(id, 'Angle', -270, 0.1, 270, value, 6, '°')
 
 export const makeScaleSliderState = (id, value) =>
     makeSliderState(id, 'Scale', 0, 0.001, 0.999, value, 5)
 
 
 export const getInitialSlidersState = () => [
-  makeSliderState(ui.SLIDER_MAX_ITERATIONS, 'Max Iterations', 0, 1, 32, 12, 2),
+  makeSliderState(ui.SLIDER_MAX_ITERATIONS, 'Max Iterations', 0, 1, 32, 16, 2),
   makeSliderState(ui.SLIDER_MIN_PX, 'Min Iteration Size', -3, 0.02, 9.9, 1, 5, 'px', map.MAP_EXP_2),
-  makeSliderState(ui.SLIDER_MAX_COUNT,            'Max Count', 0, 0.1, 19.9, 14, 6, '', map.MAP_EXP_2_ROUND),
-  makeSliderState(ui.SLIDER_MAX_CALC_TIME_US, 'Max Calc Time', 0, 0.1, 19.9, 12, 6, 'μs', map.MAP_EXP_2_ROUND),
-  makeSliderState(ui.SLIDER_MAX_DRAW_TIME_US, 'Max Draw Time', 0, 0.1, 19.9, 14, 6, 'μs', map.MAP_EXP_2_ROUND),
-  makeSliderState(ui.SLIDER_LINE_WIDTH, 'Line Width at 100px', 0.2, 0.2, 20, 8, 4, 'px'),
-  makeSliderState(ui.SLIDER_LINE_EXP, 'Line Width Exponent', -2, 0.01, -0.01, -0.5, 5),
+  makeSliderState(ui.SLIDER_MAX_COUNT, 'Max Count', 0, 0.1, 19.9, 16, 6, '', map.MAP_EXP_2_ROUND),
+  makeSliderState(ui.SLIDER_MAX_CALC_TIME_US, 'Max Calc Time', 0, 0.1, 19.9, 14.2, 6, 'μs', map.MAP_EXP_2_ROUND),
+  makeSliderState(ui.SLIDER_MAX_DRAW_TIME_US, 'Max Draw Time', 0, 0.1, 19.9, 15.4, 6, 'μs', map.MAP_EXP_2_ROUND),
 
-  makeSliderState(ui.SLIDER_ANIMATION_RATE, 'Animation Rate', 0, 1, 9, 3, 2, 'Hz', map.MAP_FRAME_RATES),
+  makeSliderState(ui.SLIDER_ANIMATION_RATE, 'Animation Rate', 0, 1, 9, 4, 2, 'Hz', map.MAP_FRAME_RATES),
   makeSliderState(ui.SLIDER_CANVAS_Y, 'Height', 60, 6, 1200, initialCanvasHeight, 4, 'px'),
 
   makeSliderState(ui.SLIDER_START_X, 'X', -990, 1, 990, 0, 4, 'px'),

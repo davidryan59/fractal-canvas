@@ -35,8 +35,10 @@ const iterateFractalOnce = (objStore, getReduxState) => {
     const item = items[i]
     const parentId = item.id
     const itemRules = rules[parentId]
-    if (item.scale < minScalePx || item.stopIterating) {
+    if (item.scale < minScalePx || !itemRules.children) {
       // Do not iterate item
+      // 1) Item scale has gone below min scale
+      // 2) Item has no children, so no iteration, and just draw the shape
       result.push(item)
     } else {
       // Iterate item
@@ -52,13 +54,9 @@ const iterateFractalOnce = (objStore, getReduxState) => {
           const branchAxisReflectFactor = (item.reflect) ? -1 : 1
           // Some simple calcs
           newItem.id = childRule.id
-          newItem.stopIterating = item.stopIterating || childRule.stopIterating
           newItem.scale = newScale
           newItem.reflect = item.reflect ^ childRule.reflect  // XOR
           newItem.angleDeg = item.angleDeg + branchAxisReflectFactor * childRule.angleDeg
-          // Weight currently used to make lineWidth larger on certain children
-          const newWeight = childRule.weight || item.weight
-          if (newWeight) newItem.weight = newWeight
           // Vector slightly more complex
           const x1 = item.vector[0]
           const y1 = item.vector[1]

@@ -9,8 +9,6 @@ const drawFractal = (objStore, getReduxState) => {
   const ctx = objStore.canvas.ctx
   const reduxState = getReduxState()
   const minScalePx = getSliderDisplayValue(reduxState, ui.SLIDER_MIN_PX)
-  const lineWidthPx = getSliderDisplayValue(reduxState, ui.SLIDER_LINE_WIDTH)
-  const lineWidthExp = getSliderDisplayValue(reduxState, ui.SLIDER_LINE_EXP)
   const maxDrawTimeMs = 0.001 * getSliderDisplayValue(reduxState, ui.SLIDER_MAX_DRAW_TIME_US)
 
   // Recalculate fractal if necessary
@@ -20,9 +18,10 @@ const drawFractal = (objStore, getReduxState) => {
 
   // General setup
   objStore.stats.timeDrawFractalStart = performance.now()
-  const yTransform = objStore.canvas.elt.height
+  const yTransform = objStore.canvas.elt.height   // Used to convert coords from top left to bottom left of canvas
   ctx.lineCap = 'round'
   let brightness = 1
+
   // Iterate over items to draw
   const len = items.length
   const rLen = (len <= 1) ? 1 : 1 / (len - 1)
@@ -33,38 +32,57 @@ const drawFractal = (objStore, getReduxState) => {
       const drawRatio = (performance.now() - objStore.stats.timeDrawFractalStart) / maxDrawTimeMs
       if (1 < drawRatio) {
         // Simply stop drawing...
-        // ideally would draw earlier iterations quickly
+        // ideally would do something quick to draw earlier iterations...
         break
       } else if (drawWarnRatio < drawRatio) {
-        // Fade fractal brightness out as drawing starts to break
+        // Fade fractal brightness out as drawing starts to approach its limit time
         brightness = (1 - drawRatio) / (1 - drawWarnRatio)
       }
     }
 
-    // Going to draw this item
+    // Draw the item
     const item = items[i]
+    // First get id...
     const id = item.id
-    // Calculate coords with 0, 0 in bottom left
+    // ...vector...
     const x = item.vector[0]
     const y = item.vector[1]
+    // ... and transform
     const scale = item.scale
-    const weight = item.weight || 1
     const angleRadians = item.angleDeg * degreesToRadians
-    const xd = scale * sin(angleRadians)
-    const yd = scale * cos(angleRadians)
+    const rFactor = (item.reflect) ? -1 : 1
 
-    // Plot coords, transforming to have 0, 0 in top left
+    // Going to draw the convex hull from the fractal rule
+    // Variables for colouring
     const posFract = rLen * i
     const sizeFract = Math.max(0, Math.min(1, 0.5 + Math.log10(scale/minScalePx)))
-    ctx.strokeStyle = (id === 0)
-      ? `rgb(${255 * brightness * (1 - posFract)}, 0, ${255 * brightness * posFract})`    // Branch
-      : `rgb(${255 * brightness * sizeFract}, ${255 * brightness * (1 - 0.25 * sizeFract)}, 0)`   // Leaf
-    ctx.lineWidth = lineWidthPx * (0.01 * scale * weight) ** -lineWidthExp
-    ctx.beginPath();
-    ctx.moveTo(x, yTransform - y);
-    ctx.lineTo(x + xd, yTransform - (y + yd));
-    ctx.stroke()
+    const idFract = (id < 1.5) ? 1 : -1
+    // Different colouring rules for 'branch' and 'leaf'
+    const branchR = 1 - posFract
+    const branchG = 0.5 * (1 - idFract)
+    const branchB = posFract
+    const leafR = sizeFract
+    const leafG = (1 - 0.25 * sizeFract) * (1 - 0.5 * posFract - 0.5 * idFract)
+    const leafB = 0.5 * posFract + 0.5 * idFract
+    // Use function to scale 0..1 to 0..255 * brightness
+    const sc255 = numberBetween0And1 => 255 * brightness * numberBetween0And1
+    // Place correct colour in the canvas context
+    ctx.fillStyle = (id === 0 || id === 3)
+      ? `rgb(${sc255(branchR)}, ${sc255(branchG)}, ${sc255(branchB)})`
+      : `rgb(${sc255(leafR)}, ${sc255(leafG)}, ${sc255(leafB)})`
 
+    // Trace the convex hull for this fractal
+    ctx.beginPath();
+    const hull = objStore.fractal.rules[id].hull
+    for (let j=0; j<hull.length; j++) {
+      const hullPoint = hull[j]
+      const u = hullPoint[0]
+      const v = hullPoint[1]
+      const newX = x + scale * (u * rFactor *  cos(angleRadians) + v * sin(angleRadians))
+      const newY = y + scale * (u * rFactor * -sin(angleRadians) + v * cos(angleRadians))
+      ctx.lineTo(newX, yTransform - newY);
+    }
+    ctx.fill()
   }
   objStore.stats.timeDrawFractalEnd = performance.now()
 }

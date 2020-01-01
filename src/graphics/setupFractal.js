@@ -2,6 +2,10 @@ import * as ui from '../constants/uiNames'
 import { buttonActive } from '../getters/button'
 import { getSliderDisplayValue } from '../getters/slider'
 
+
+// Control shape of corners
+const sqrt_3_400 = 0.1 * (3/4) ** 0.5  // 0.08660...
+
 const setupFractal = (objStore, getReduxState) => {
   console.log("Refreshing fractal setup")
   // Get relevant parameters from reduxState
@@ -43,16 +47,17 @@ const setupFractal = (objStore, getReduxState) => {
   objStore.fractal.rules = [
     {
       id: 0,
-      name: 'trunk',
-      children: [
-        {
-          id: 0,
-          vector: [0, 0],
-          scale: 1,
-          angleDeg: 0,
-          stopIterating: true,
-        }
-      ]
+      name: 'trunk 1',
+      hull: [
+        [-0.1, 0],
+        [-0.05, -sqrt_3_400],
+        [0.05, -sqrt_3_400],
+        [0.1, 0],
+        [0.1, 1],
+        [0.05, 1 + sqrt_3_400],
+        [-0.05, 1 + sqrt_3_400],
+        [-0.1, 1],
+      ],
     },
     {
       id: 1,
@@ -99,13 +104,26 @@ const setupFractal = (objStore, getReduxState) => {
           reflect: reflect_2_2,
         },
         {
-          id: 0,
+          id: 3,
           vector: [0, 0],
-          scale: ratio_b2_b1,
+          scale: 1,
           angleDeg: 0,
-          weight: (ratio_b2_b1 > 0) ? 1 / ratio_b2_b1 : 0
         },
       ]
+    },
+    {
+      id: 3,
+      name: 'trunk 2',
+      hull: [
+        [-0.1, 0],
+        [-0.05, -sqrt_3_400],
+        [0.05, -sqrt_3_400],
+        [0.1, 0],
+        [0.1, ratio_b2_b1],
+        [0.05, ratio_b2_b1 + sqrt_3_400],
+        [-0.05, ratio_b2_b1 + sqrt_3_400],
+        [-0.1, ratio_b2_b1],
+      ],
     },
   ]
 }
