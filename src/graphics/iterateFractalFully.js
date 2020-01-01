@@ -1,12 +1,12 @@
 import * as ui from '../constants/uiNames'
 import { getSliderDisplayValue } from '../getters/slider'
-import { hullRoundingAccuracy, hullCalcReps } from '../constants/general'
+import { verbosity, hullRoundingAccuracy, hullCalcReps } from '../constants/general'
 import iterateConvexHullOnce from './iterateConvexHullOnce'
 import iterateFractalOnce from './iterateFractalOnce'
 
 
 const iterateFractalFully = (objStore, getReduxState) => {
-  console.log("Calculating all iterations of fractal")
+  if (verbosity) console.log("Calculating all iterations of fractal")
   const reduxState = getReduxState()
   objStore.fractal.current = [objStore.fractal.start]
   objStore.stats.sizeAll = 1

@@ -1,3 +1,4 @@
+import { verbosity } from '../constants/general'
 import { fractalUpdate } from '../graphics/fractalUpdates'
 
 let nextActionId = 0
@@ -7,11 +8,9 @@ export const getActionObject = (type, data) => ({
   ...data
 })
 
-let nextThunkId = 0
-export const getThunk = (type, data) => (dispatch, getState, objStore) => {
-  const theData = { thunkId: nextThunkId++, ...data }
-  const theAction = getActionObject(type, theData)
-  console.log(theAction)
-  dispatch(theAction)
-  fractalUpdate(theAction, getState, objStore)
+export const getThunk = (type, data) => (reduxDispatch, getReduxState, objStore) => {
+  const theAction = getActionObject(type, data)
+  if (2 <= verbosity) console.log(theAction)
+  reduxDispatch(theAction)
+  fractalUpdate(theAction, getReduxState, objStore)
 }

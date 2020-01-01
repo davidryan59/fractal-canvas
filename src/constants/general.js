@@ -1,3 +1,9 @@
+// Control whether to console.log the developer info
+// 0 - log nothing
+// 1 - log main things
+// 2 - log more details
+export const verbosity = 1
+
 // Minimum number of pixels change in window size (vertically or horizontally)
 // that causes a window change size action to be dispatched
 export const windowSizeChangeMinDiff = 30

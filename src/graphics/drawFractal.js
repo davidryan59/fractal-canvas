@@ -21,6 +21,8 @@ const drawFractal = (objStore, getReduxState) => {
   const yTransform = objStore.canvas.elt.height   // Used to convert coords from top left to bottom left of canvas
   ctx.lineCap = 'round'
   let brightness = 1
+  // Create function to range 0..1 to range 0..255 * brightness
+  const sc255 = numberBetween0And1 => 255 * brightness * numberBetween0And1
 
   // Iterate over items to draw
   const len = items.length
@@ -64,8 +66,6 @@ const drawFractal = (objStore, getReduxState) => {
     const leafR = sizeFract
     const leafG = (1 - 0.25 * sizeFract) * (1 - 0.5 * posFract - 0.5 * idFract)
     const leafB = 0.5 * posFract + 0.5 * idFract
-    // Use function to scale 0..1 to 0..255 * brightness
-    const sc255 = numberBetween0And1 => 255 * brightness * numberBetween0And1
     // Place correct colour in the canvas context
     ctx.fillStyle = (id === 0 || id === 3)
       ? `rgb(${sc255(branchR)}, ${sc255(branchG)}, ${sc255(branchB)})`

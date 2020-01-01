@@ -1,13 +1,14 @@
 import * as ui from '../constants/uiNames'
 import { buttonActive } from '../getters/button'
 import { getSliderDisplayValue } from '../getters/slider'
+import { verbosity } from '../constants/general'
 
 
 // Control shape of corners
 const sqrt_3_400 = 0.1 * (3/4) ** 0.5  // 0.08660...
 
 const setupFractal = (objStore, getReduxState) => {
-  console.log("Refreshing fractal setup")
+  if (verbosity) console.log("Refreshing fractal setup")
   // Get relevant parameters from reduxState
   const reduxState = getReduxState()
   const start_x = getSliderDisplayValue(reduxState, ui.SLIDER_START_X)
