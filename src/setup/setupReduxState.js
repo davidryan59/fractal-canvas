@@ -36,6 +36,9 @@ export const getInitialButtonsState = () => [
   makeReflectToggleState(ui.TOGGLE_REFLECT_1_2),
   makeReflectToggleState(ui.TOGGLE_REFLECT_2_1),
   makeReflectToggleState(ui.TOGGLE_REFLECT_2_2),
+  makeToggleState(ui.TOGGLE_ANIMATE, 'Animation OFF', 'Animation ON', true, 130),
+  makeToggleState(ui.TOGGLE_DISPLAY_STATS, 'Stats OFF', 'Stats ON', true, 100),
+  makeToggleState(ui.TOGGLE_DISPLAY_STATEVIEW, 'State Viewer OFF', 'State Viewer ON', false, 150),
 ]
 
 

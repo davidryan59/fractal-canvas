@@ -2,7 +2,7 @@ import React from 'react';
 
 import CanvasC from './CanvasC';
 import PanelC from './PanelC';
-// import StateViewerC from './StateViewerC';
+import StateViewerC from './StateViewerC';
 
 import * as ui from '../constants/uiNames'
 
@@ -21,8 +21,8 @@ const App = props =>
       <PanelC id={ui.PANEL_F2_C2} innerClassNames='greyBack' />
     </div>
     <PanelC id={ui.PANEL_MAIN} innerClassNames='flex greyBack justifyStart' />
+    {(props.drawStateViewer) ? <StateViewerC /> : null}
   </div>
-  // <StateViewerC />
 
 
 export default App

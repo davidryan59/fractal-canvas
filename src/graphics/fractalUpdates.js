@@ -1,7 +1,17 @@
 import setupCanvas from './setupCanvas'
 import setupFractal from './setupFractal'
+import startMainLoop from './startMainLoop'
 import { WINDOW_RESIZE } from '../constants/actionTypes'
+import { verbosity } from '../constants/general'
 import * as ui from '../constants/uiNames'
+import { buttonActive } from '../getters/button'
+
+
+const dealWithAnimateToggle = (objStore, getReduxState) => {
+  const isNowActive = buttonActive(getReduxState(), ui.TOGGLE_ANIMATE)
+  if (verbosity) console.log(`Animation state changed to ${isNowActive}`)
+  if (isNowActive) startMainLoop(objStore, getReduxState)
+}
 
 export const fractalUpdate = (data, getReduxState, objStore) => {
   if (objStore.setup && data && getReduxState) {
@@ -38,6 +48,10 @@ export const fractalUpdate = (data, getReduxState, objStore) => {
         case ui.SLIDER_ANGLE_2_2:
         case ui.TOGGLE_REFLECT_2_2:
           setupFractal(objStore, getReduxState)
+          break
+
+        case ui.TOGGLE_ANIMATE:
+          dealWithAnimateToggle(objStore, getReduxState)
           break
 
         case ui.SLIDER_CANVAS_Y:
