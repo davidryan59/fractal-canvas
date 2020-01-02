@@ -30,11 +30,6 @@ const drawStats = (objStore, getReduxState) => {
   if (!sC.lastUpdateTimeMs || statUpdatePeriodMs < performance.now() - sC.lastUpdateTimeMs)
     updateStatCache(objStore, getReduxState)
 
-  // Setup colours
-  const colGood = '#6F6'
-  const colOK = '#DD6'
-  const colBad = '#F66'
-
   // General setup
   const ctx = objStore.canvas.ctx
   const elt = objStore.canvas.elt
@@ -43,42 +38,32 @@ const drawStats = (objStore, getReduxState) => {
   const mult = 20
   let start, count
 
+  // Helper functions to draw text lines
+  const drawTextLine = (text, hPos, condGood, condBad) => {
+    ctx.fillStyle = (condGood) ? '#6F6' : (condBad) ? '#F66' : '#DD6'
+    ctx.fillText(text, hPos, elt.height - start + mult * count++)
+  }
+  const drawTextLineL = (text, condGood, condBad) => drawTextLine(text, edge, condGood, condBad)
+  const drawTextLineR = (text, condGood, condBad) => drawTextLine(text, elt.width - edge, condGood, condBad)
+
   // Items on left
   start = 70
   count = 0
   ctx.textAlign = 'left'
-  // Size of all iterations
-  ctx.fillStyle = (sC.sizeAll < sC.maxCount) ? colGood : colOK
-  ctx.fillText(`count all: ${sC.sizeAll}`, edge, elt.height - start + mult * count++)
-  // Size of final iteration
-  ctx.fillStyle = (sC.sizeCurrent < sC.maxCount) ? colGood : colBad
-  ctx.fillText(`count last: ${sC.sizeCurrent}`, edge, elt.height - start + mult * count++)
-  // Frame counter
-  ctx.fillStyle = colGood
-  ctx.fillText(`count frames: ${sC.framesDrawn}`, edge, elt.height - start + mult * count++)
+  drawTextLineL(`count all: ${sC.sizeAll}`, sC.sizeAll < sC.maxCount)
+  drawTextLineL(`count last: ${sC.sizeCurrent}`, sC.sizeCurrent < sC.maxCount, true)
+  drawTextLineL(`count frames: ${sC.framesDrawn}`, true)
 
   // Items on right
   start = 130
   count = 0
   ctx.textAlign = 'right'
-  // Iteration count
-  ctx.fillStyle = (sC.iterationsUsed < sC.maxIterations) ? colGood : colOK
-  ctx.fillText(`iterations used: ${sC.iterationsUsed}`, elt.width - edge, elt.height - start + mult * count++)
-  // Iteration timer
-  ctx.fillStyle = colGood
-  ctx.fillText(`max time: ${sC.maxAnimationTimeUs} μs`, elt.width - edge, elt.height - start + mult * count++)
-  // Convex hull calc timer
-  ctx.fillStyle = colOK
-  ctx.fillText(`hull calc time: ${sC.hullTimeUs} μs`, elt.width - edge, elt.height - start + mult * count++)
-  // Iteration calc timer
-  ctx.fillStyle = (sC.calcTimeUs < sC.maxCalcTimeUs) ? colGood : colBad
-  ctx.fillText(`calc, max calc time: ${sC.calcTimeUs}, ${sC.maxCalcTimeUs} μs`, elt.width - edge, elt.height - start + mult * count++)
-  // Frame timer
-  ctx.fillStyle = (sC.drawTimeUs < sC.maxDrawTimeUs) ? colGood : colBad
-  ctx.fillText(`draw, max draw time: ${sC.drawTimeUs}, ${sC.maxDrawTimeUs} μs`, elt.width - edge, elt.height - start + mult * count++)
-  // Spare time
-  ctx.fillStyle = (0 < sC.spareTimeUs) ? colGood : colBad
-  ctx.fillText(`spare time: ${sC.spareTimeUs} μs`, elt.width - edge, elt.height - start + mult * count++)
+  drawTextLineR(`iterations used: ${sC.iterationsUsed}`, sC.iterationsUsed < sC.maxIterations)
+  drawTextLineR(`max time: ${sC.maxAnimationTimeUs} μs`, true)
+  drawTextLineR(`hull calc time: ${sC.hullTimeUs} μs`)
+  drawTextLineR(`calc, max calc time: ${sC.calcTimeUs}, ${sC.maxCalcTimeUs} μs`, sC.calcTimeUs < sC.maxCalcTimeUs, true)
+  drawTextLineR(`draw, max draw time: ${sC.drawTimeUs}, ${sC.maxDrawTimeUs} μs`, sC.drawTimeUs < sC.maxDrawTimeUs, true)
+  drawTextLineR(`spare time: ${sC.spareTimeUs} μs`, 0 < sC.spareTimeUs, true)
 }
 
 export default drawStats
