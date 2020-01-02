@@ -1,5 +1,5 @@
 import { sin, cos, degreesToRadians } from '../constants/general'
-const convexHull = require('monotone-convex-hull-2d')
+import convexHull from 'monotone-convex-hull-2d'
 
 const iterateConvexHullOnce = (objStore, getReduxState, roundTo) => {
   const roundToRecip = 1 / roundTo
