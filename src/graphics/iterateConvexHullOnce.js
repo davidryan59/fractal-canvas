@@ -1,10 +1,10 @@
-import { sin, cos, degreesToRadians } from '../constants/general'
+import { sin, cos, degreesToRadians, defaultHullIteration } from '../constants/general'
 import convexHull from 'monotone-convex-hull-2d'
 
 const iterateConvexHullOnce = (objStore, getReduxState, roundTo) => {
   const roundToRecip = 1 / roundTo
   const rules = objStore.fractal.rules
-  const currentHulls = rules.map( (rule, idx) => (rule.hull) ? rule.hull : [[0, 0]] )
+  const currentHulls = rules.map( (rule, idx) => (rule.hull) ? rule.hull : defaultHullIteration )
   for (let i=0; i<rules.length; i++) {
     const rule = rules[i]
     const nextHull = []

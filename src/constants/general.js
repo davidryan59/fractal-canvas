@@ -17,6 +17,19 @@ export const hullRoundingAccuracy = 0.1
 // Higher hullCalcReps give more accurate hulls, but take longer to calculate
 export const hullCalcReps = 20
 
+// Define default convex hulls
+// For drawing, ought to have a rectangle
+export const defaultHullDrawing = [
+  [0, 0],
+  [1, 0],
+  [1, 1],
+  [0, 1],
+]
+// For iteration, only need to start with a single point
+export const defaultHullIteration = [
+  [0, 0],
+]
+
 // Don't check performance/timing every loop, skip this number of loops
 export const loopsBetweenTimingChecks = 10
 

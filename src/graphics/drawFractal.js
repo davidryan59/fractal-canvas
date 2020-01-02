@@ -1,6 +1,6 @@
 import * as ui from '../constants/uiNames'
 import { getSliderDisplayValue } from '../getters/slider'
-import { sin, cos, degreesToRadians, loopsBetweenTimingChecks, drawWarnRatio } from '../constants/general'
+import { sin, cos, degreesToRadians, loopsBetweenTimingChecks, drawWarnRatio, defaultHullDrawing } from '../constants/general'
 import iterateFractalFully from './iterateFractalFully'
 
 
@@ -73,7 +73,7 @@ const drawFractal = (objStore, getReduxState) => {
 
     // Trace the convex hull for this fractal
     ctx.beginPath();
-    const hull = objStore.fractal.rules[id].hull
+    const hull = objStore.fractal.rules[id].hull || defaultHullDrawing
     for (let j=0; j<hull.length; j++) {
       const hullPoint = hull[j]
       const u = hullPoint[0]
