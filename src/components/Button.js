@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Button = ({ button, valueChange }) => (
+const Button = ({ button, valueChange }) =>
   <div className='flex alignCentre'>
     <button
       id={button.id}
@@ -10,6 +10,5 @@ const Button = ({ button, valueChange }) => (
       {button.isActive ? button.labelActive : button.labelInactive}
     </button>
   </div>
-)
 
 export default Button

@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Picklist = ({ picklist, valueChange }) => (
+const Picklist = ({ picklist, valueChange }) =>
   <div className='flex alignCentre' style={{ width: '250px' }}>
     <div style={{ width: '60px' }}>
       <label className='labelColour'>
@@ -18,6 +18,5 @@ const Picklist = ({ picklist, valueChange }) => (
       </select>
     </div>
   </div>
-)
 
 export default Picklist

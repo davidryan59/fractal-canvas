@@ -1,7 +1,7 @@
 import React from 'react'
 
 
-const Canvas = props =>
-  <canvas id="main-canvas" width={props.width} height={props.height} />
+const Canvas = ({ width, height }) =>
+  <canvas id="main-canvas" width={width} height={height} />
 
 export default Canvas

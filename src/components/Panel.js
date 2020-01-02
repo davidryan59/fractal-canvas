@@ -7,9 +7,9 @@ import TextC from './TextC'
 
 import * as ui from '../constants/uiNames'
 
-const Panel = props => (
-  <div className={props.innerClassNames}>
-    {props.items.map(item =>
+const Panel = ({ innerClassNames, items }) =>
+  <div className={innerClassNames}>
+    {items.map(item =>
       (item.type === ui.TYPE_TOGGLE)
         ? <ButtonC key={item.id} button={item} />
         : (item.type === ui.TYPE_PICKLIST)
@@ -21,6 +21,5 @@ const Panel = props => (
               : <TextC key={item.id} text={{ value: 'Error: panel type not recognised' }} />
     )}
   </div>
-)
 
 export default Panel

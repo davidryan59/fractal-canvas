@@ -7,7 +7,7 @@ import StateViewerC from './StateViewerC';
 import * as ui from '../constants/uiNames'
 
 
-const App = props =>
+const App = ({ drawStateViewer }) =>
   <div className="appDiv">
     <PanelC id={ui.PANEL_CANVAS} innerClassNames='flex greyBack justifyStart' />
     <div className='flex justifyStart'>
@@ -21,7 +21,7 @@ const App = props =>
       <PanelC id={ui.PANEL_F2_C2} innerClassNames='greyBack' />
     </div>
     <PanelC id={ui.PANEL_MAIN} innerClassNames='flex greyBack justifyStart' />
-    {(props.drawStateViewer) ? <StateViewerC /> : null}
+    {(drawStateViewer) ? <StateViewerC /> : null}
   </div>
 
 

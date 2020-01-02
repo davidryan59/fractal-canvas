@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Slider = ({ slider, displayVal, valueChange }) => (
+const Slider = ({ slider, displayVal, valueChange }) =>
   <div style={{ width: '250px', background: `${slider.bgColour}`, borderRadius: '4px' }}>
     <div style={{ marginBottom: '1px', paddingBottom: '0px' }}>
       <label
@@ -37,6 +37,5 @@ const Slider = ({ slider, displayVal, valueChange }) => (
       />
     </div>
   </div>
-)
 
 export default Slider
