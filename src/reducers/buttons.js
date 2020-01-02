@@ -1,5 +1,5 @@
 import { getInitialButtonsState } from '../setup/setupReduxState'
-import { BUTTON_PRESS } from '../constants/actionTypes'
+import { BUTTON_PRESS } from '../actions/actionTypes'
 
 import button from './button'
 

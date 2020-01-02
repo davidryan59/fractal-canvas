@@ -2,7 +2,7 @@ import { connect } from 'react-redux'
 
 import Panel from './Panel'
 
-import * as ui from '../constants/uiNames'
+import * as ui from '../general/uiNames'
 
 const extractUIItems = (state, panelId) => {
   const innerItemIdArray = ui.panelSetup[panelId]

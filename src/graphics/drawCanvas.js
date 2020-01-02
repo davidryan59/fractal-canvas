@@ -1,5 +1,5 @@
 import { buttonActive } from '../getters/button'
-import * as ui from '../constants/uiNames'
+import * as ui from '../general/uiNames'
 import clearCanvas from './clearCanvas'
 import drawFractal from './drawFractal'
 import drawStats from './drawStats'

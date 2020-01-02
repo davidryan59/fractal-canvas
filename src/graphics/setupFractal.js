@@ -1,7 +1,7 @@
-import * as ui from '../constants/uiNames'
+import * as ui from '../general/uiNames'
 import { buttonActive } from '../getters/button'
 import { getSliderDisplayValue } from '../getters/slider'
-import { verbosity } from '../constants/general'
+import { verbosity } from '../_params'
 
 
 // Control shape of corners

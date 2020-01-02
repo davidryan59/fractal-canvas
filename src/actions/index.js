@@ -1,4 +1,4 @@
-import { verbosity } from '../constants/general'
+import { verbosity } from '../_params'
 import { fractalUpdate } from '../graphics/fractalUpdates'
 
 let nextActionId = 0

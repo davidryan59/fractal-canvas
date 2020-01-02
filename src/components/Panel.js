@@ -5,7 +5,7 @@ import PicklistC from './PicklistC'
 import SliderC from './SliderC'
 import TextC from './TextC'
 
-import * as ui from '../constants/uiNames'
+import * as ui from '../general/uiNames'
 
 const Panel = ({ innerClassNames, items }) =>
   <div className={innerClassNames}>

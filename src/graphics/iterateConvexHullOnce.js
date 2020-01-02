@@ -1,4 +1,4 @@
-import { sin, cos, degreesToRadians, defaultHullIteration } from '../constants/general'
+import { sin, cos, degreesToRadians, defaultHullIteration } from '../_params'
 import convexHull from 'monotone-convex-hull-2d'
 
 const iterateConvexHullOnce = (objStore, getReduxState, roundTo) => {

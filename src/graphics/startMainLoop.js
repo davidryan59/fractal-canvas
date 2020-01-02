@@ -1,5 +1,5 @@
-import * as ui from '../constants/uiNames'
-import { verbosity } from '../constants/general'
+import * as ui from '../general/uiNames'
+import { verbosity } from '../_params'
 import { buttonActive } from '../getters/button'
 import { getSliderDisplayValue } from '../getters/slider'
 import drawCanvas from './drawCanvas'

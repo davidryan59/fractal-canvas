@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 
 import { buttonActive } from '../getters/button'
-import * as ui from '../constants/uiNames'
+import * as ui from '../general/uiNames'
 
 import App from './App'
 

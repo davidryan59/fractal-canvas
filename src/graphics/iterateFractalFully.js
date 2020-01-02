@@ -1,6 +1,6 @@
-import * as ui from '../constants/uiNames'
+import * as ui from '../general/uiNames'
 import { getSliderDisplayValue } from '../getters/slider'
-import { verbosity, hullRoundingAccuracy, hullCalcReps } from '../constants/general'
+import { verbosity, hullRoundingAccuracy, hullCalcReps } from '../_params'
 import iterateConvexHullOnce from './iterateConvexHullOnce'
 import iterateFractalOnce from './iterateFractalOnce'
 

@@ -1,6 +1,6 @@
-import * as ui from '../constants/uiNames'
+import * as ui from '../general/uiNames'
 import { getSliderDisplayValue } from '../getters/slider'
-import { sin, cos, degreesToRadians, loopsBetweenTimingChecks } from '../constants/general'
+import { sin, cos, degreesToRadians, loopsBetweenTimingChecks } from '../_params'
 
 
 const iterateFractalOnce = (objStore, getReduxState) => {

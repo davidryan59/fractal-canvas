@@ -1,5 +1,5 @@
 import { getInitialSlidersState } from '../setup/setupReduxState'
-import { SLIDER_MOVE } from '../constants/actionTypes'
+import { SLIDER_MOVE } from '../actions/actionTypes'
 
 import slider from './slider'
 

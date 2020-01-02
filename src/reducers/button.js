@@ -1,4 +1,4 @@
-import { BUTTON_PRESS } from '../constants/actionTypes'
+import { BUTTON_PRESS } from '../actions/actionTypes'
 
 const button = (state = {}, action) => {
   switch (action.type) {

@@ -1,6 +1,6 @@
 import setupStats from '../graphics/setupStats'
 import { fractalInitialise } from '../graphics/fractalUpdates'
-import { verbosity } from '../constants/general'
+import { verbosity } from '../_params'
 
 const setupObjectStore = (objStore, reduxStore) => {
   const getState = reduxStore.getState

@@ -1,6 +1,6 @@
-import { initialCanvasHeight, getCanvasWidthFromWindowWidth } from '../constants/general'
+import { initialCanvasHeight, getCanvasWidthFromWindowWidth } from '../_params'
 import * as map from '../general/mappings'
-import * as ui from '../constants/uiNames'
+import * as ui from '../general/uiNames'
 
 
 export const getInitialWindowState = () => ({

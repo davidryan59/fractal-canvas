@@ -4,7 +4,7 @@ import CanvasC from './CanvasC';
 import PanelC from './PanelC';
 import StateViewerC from './StateViewerC';
 
-import * as ui from '../constants/uiNames'
+import * as ui from '../general/uiNames'
 
 
 const App = ({ drawStateViewer }) =>

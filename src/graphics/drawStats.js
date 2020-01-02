@@ -1,6 +1,6 @@
-import * as ui from '../constants/uiNames'
+import * as ui from '../general/uiNames'
 import { getSliderDisplayValue } from '../getters/slider'
-import { statUpdatePeriodMs } from '../constants/general'
+import { statUpdatePeriodMs } from '../_params'
 
 
 const updateStatCache = (objStore, getReduxState) => {

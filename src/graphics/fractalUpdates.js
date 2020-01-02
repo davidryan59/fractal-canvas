@@ -1,9 +1,9 @@
 import setupCanvas from './setupCanvas'
 import setupFractal from './setupFractal'
 import startMainLoop from './startMainLoop'
-import { WINDOW_RESIZE } from '../constants/actionTypes'
-import { verbosity } from '../constants/general'
-import * as ui from '../constants/uiNames'
+import { WINDOW_RESIZE } from '../actions/actionTypes'
+import { verbosity } from '../_params'
+import * as ui from '../general/uiNames'
 import { buttonActive } from '../getters/button'
 
 

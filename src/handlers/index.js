@@ -1,6 +1,6 @@
 import { getThunk } from '../actions'
-import * as gen from '../constants/general'
-import { WINDOW_RESIZE } from '../constants/actionTypes'
+import * as gen from '../_params'
+import { WINDOW_RESIZE } from '../actions/actionTypes'
 
 
 export const windowResizeHandler = (event, reduxStore) => {

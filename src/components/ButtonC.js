@@ -2,7 +2,7 @@ import { connect } from 'react-redux'
 
 import Button from './Button'
 import { getThunk } from '../actions'
-import { BUTTON_PRESS } from '../constants/actionTypes'
+import { BUTTON_PRESS } from '../actions/actionTypes'
 
 const mapStateToProps = (state, ownProps) => ({
 })
