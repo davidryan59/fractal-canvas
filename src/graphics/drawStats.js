@@ -33,21 +33,21 @@ const drawStats = (objStore, getReduxState) => {
   // General setup
   const ctx = objStore.canvas.ctx
   const elt = objStore.canvas.elt
-  ctx.font = '12px monospace'
+  ctx.font = '11px monospace'
+  const mult = 15
   const edge = 20
-  const mult = 20
-  let start, count
+  let linesUp, count
 
   // Helper functions to draw text lines
   const drawTextLine = (text, hPos, condGood, condBad) => {
     ctx.fillStyle = (condGood) ? '#6F6' : (condBad) ? '#F66' : '#DD6'
-    ctx.fillText(text, hPos, elt.height - start + mult * count++)
+    ctx.fillText(text, hPos, elt.height + mult * (count++ - linesUp))
   }
   const drawTextLineL = (text, condGood, condBad) => drawTextLine(text, edge, condGood, condBad)
   const drawTextLineR = (text, condGood, condBad) => drawTextLine(text, elt.width - edge, condGood, condBad)
 
   // Items on left
-  start = 70
+  linesUp = 4
   count = 0
   ctx.textAlign = 'left'
   drawTextLineL(`count all: ${sC.sizeAll}`, sC.sizeAll < sC.maxCount)
@@ -55,7 +55,7 @@ const drawStats = (objStore, getReduxState) => {
   drawTextLineL(`count frames: ${sC.framesDrawn}`, true)
 
   // Items on right
-  start = 130
+  linesUp = 7
   count = 0
   ctx.textAlign = 'right'
   drawTextLineR(`iterations used: ${sC.iterationsUsed}`, sC.iterationsUsed < sC.maxIterations)

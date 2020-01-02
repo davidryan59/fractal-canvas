@@ -1,7 +1,7 @@
 import React from 'react'
 
 const Slider = ({ slider, displayVal, valueChange }) =>
-  <div style={{ width: '250px', background: `${slider.bgColour}`, borderRadius: '4px' }}>
+  <div className='sliderDiv' style={{ width: '200px' }}>
     <div style={{ marginBottom: '1px', paddingBottom: '0px' }}>
       <label
         id={`label-${slider.id}`}
@@ -33,7 +33,7 @@ const Slider = ({ slider, displayVal, valueChange }) =>
         max={slider.max}
         value={slider.value}
         onChange={valueChange}
-        style={{ width: '230px' }}
+        style={{ width: '180px' }}
       />
     </div>
   </div>

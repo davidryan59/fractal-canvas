@@ -5,7 +5,7 @@ const Button = ({ button, valueChange }) =>
     <button
       id={button.id}
       onClick={valueChange}
-      style={{ padding: '5px', width: `${button.widthPx}px` }}
+      style={{ width: `${button.widthPx}px` }}
     >
       {button.isActive ? button.labelActive : button.labelInactive}
     </button>

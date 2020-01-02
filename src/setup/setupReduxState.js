@@ -28,7 +28,7 @@ export const makeToggleState =
     })
 
 export const makeReflectToggleState = id =>
-    makeToggleState(id, 'Normal', 'REFLECT L/R', false, 140)
+    makeToggleState(id, 'Normal', 'REFLECT L/R', false, 100)
 
 export const getInitialButtonsState = () => [
   makeReflectToggleState(ui.TOGGLE_REFLECT_START),
@@ -36,20 +36,20 @@ export const getInitialButtonsState = () => [
   makeReflectToggleState(ui.TOGGLE_REFLECT_1_2),
   makeReflectToggleState(ui.TOGGLE_REFLECT_2_1),
   makeReflectToggleState(ui.TOGGLE_REFLECT_2_2),
-  makeToggleState(ui.TOGGLE_ANIMATE, 'Animation OFF', 'Animation ON', true, 130),
-  makeToggleState(ui.TOGGLE_DISPLAY_STATS, 'Stats OFF', 'Stats ON', true, 100),
-  makeToggleState(ui.TOGGLE_DISPLAY_STATEVIEW, 'State Viewer OFF', 'State Viewer ON', false, 150),
+  makeToggleState(ui.TOGGLE_ANIMATE, 'Animation OFF', 'Animation ON', true, 110),
+  makeToggleState(ui.TOGGLE_DISPLAY_STATS, 'Stats OFF', 'Stats ON', true, 80),
+  makeToggleState(ui.TOGGLE_DISPLAY_STATEVIEW, 'State Viewer OFF', 'State Viewer ON', false, 120),
 ]
 
 
 // SLIDERS / INPUT RANGES
 // Mandatory id ... len
-// Optional: unit ... bgColour
+// Optional: unit, displayFn
 export const makeSliderState =
-  (id, label, min, step, max, value, len, unit, displayFn, bgColour) =>
+  (id, label, min, step, max, value, len, unit, displayFn) =>
     ({
       type: ui.TYPE_SLIDER,
-      id, label, min, step, max, value, len, unit, displayFn, bgColour
+      id, label, min, step, max, value, len, unit, displayFn
     })
 
 export const makeIdSliderState = (id, value) =>

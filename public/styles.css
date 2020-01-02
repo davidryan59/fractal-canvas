@@ -2,7 +2,7 @@ body {
   margin: 0px;
   background: #444;
   font-family: monospace;
-  font-size: 12px;
+  font-size: 10px;
   color: #DDD;
   text-align: center;
 }
@@ -13,11 +13,6 @@ body {
   border: 1px #999 solid;
   border-radius: 10px;
   padding: 7px;
-}
-
-.appTopLine {
-  margin: 5px 0px;
-  font-size: 14px;
 }
 
 div {
@@ -37,24 +32,28 @@ canvas {
   border-radius: 7px;
   padding: 5px;
   font-family: monospace;
-  font-size: 9;
+  font-size: 8px;
 }
 
 button {
-  margin: 2px;
-  padding: 4px;
+  margin: 1px;
+  padding: 2px;
   border-radius: 4px;
   background: #DDFFCC;
   color: #01B;
-  font-size: 12px;
   font-weight: bold;
   cursor: pointer;
 }
 
-.picklist {
+.picklistSelect {
   background: #FFDDCC;
   color: #02A;
-  font-size: 12px;
+}
+
+.sliderDiv {
+  margin: 1px;
+  padding: 2px;
+  background: #333;
 }
 
 select {
