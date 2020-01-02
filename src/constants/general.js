@@ -33,6 +33,9 @@ export const defaultHullIteration = [
 // Don't check performance/timing every loop, skip this number of loops
 export const loopsBetweenTimingChecks = 10
 
+// Update stats periodically, not more frequently than this
+export const statUpdatePeriodMs = 250
+
 // If draw time has used more than this proportion of time, start to warn user
 // typically by fading out the fractal
 export const drawWarnRatio = 0.9
