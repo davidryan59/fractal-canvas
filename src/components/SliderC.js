@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import Slider from './Slider'
 import { getThunk } from '../actions'
 import makeNChars from '../general/makeNChars'
-import { SLIDER_MOVE } from '../actions/actionTypes'
+import { SLIDER_MOVE } from '../reducers/uiItem'
 import { numericMap } from '../general/mappings'
 
 const mapStateToProps = (state, ownProps) => {

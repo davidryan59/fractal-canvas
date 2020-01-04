@@ -21,10 +21,10 @@ export const getInitialPicklistsState = () => []
 
 // BUTTONS / TOGGLES
 export const makeToggleState =
-  (id, labelInactive, labelActive, isActive, widthPx) =>
+  (id, labelInactive, labelActive, value, widthPx) =>
     ({
       type: ui.TYPE_TOGGLE,
-      id, labelInactive, labelActive, isActive, widthPx
+      id, labelInactive, labelActive, value, widthPx
     })
 
 export const makeReflectToggleState = id =>

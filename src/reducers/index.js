@@ -1,19 +1,17 @@
 import { combineReducers } from 'redux'
 
-import lastAction from './lastAction'
-import windowReducer from './window'
-import canvas from './canvas'
-import buttons from './buttons'
-import picklists from './picklists'
-import sliders from './sliders'
+import * as wc from './windowCanvas'
+import * as ui from './uiItem'
+
+const lastActionReducer = (state = {}, action) => action
 
 const appReducer = combineReducers({
-  lastAction,
-  window: windowReducer,
-  canvas,
-  buttons,
-  picklists,
-  sliders,
+  lastAction: lastActionReducer,
+  window: wc.windowReducer,
+  canvas: wc.canvasReducer,
+  buttons: ui.buttonsReducer,
+  picklists: ui.picklistsReducer,
+  sliders: ui.slidersReducer,
 })
 
 export default appReducer
