@@ -1,4 +1,4 @@
-import { getThunk } from '../actions'
+import { getThunk } from '../reducers/actions'
 import * as gen from '../_params'
 import { WINDOW_RESIZE } from '../reducers/windowCanvas'
 
