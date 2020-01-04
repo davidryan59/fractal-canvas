@@ -70,31 +70,31 @@ export const getInitialSlidersState = () => [
   makeSliderState(ui.SLIDER_MAX_DRAW_TIME_US, 'Max Draw Time', 3.3, 0.1, 19.9, 15.4, 6, 'μs', map.MAP_EXP_2_ROUND),
 
   makeSliderState(ui.SLIDER_ANIMATION_RATE, 'Animation Rate', 0, 1, 9, 4, 2, 'Hz', map.MAP_FRAME_RATES),
-  makeSliderState(ui.SLIDER_CANVAS_Y, 'Height', 60, 6, 1200, initialCanvasHeight, 4, 'px'),
+  makeSliderState(ui.SLIDER_CANVAS_Y, 'Height', 60, 6, 1600, initialCanvasHeight, 4, 'px'),
 
   makeSliderState(ui.SLIDER_HULL_ITERATIONS, 'Iterations', 0, 1, 99, 25, 2),
   makeSliderState(ui.SLIDER_HULL_ROUNDING, 'Rounding', -6, 0.1, 3, -4, 6, 'px', map.MAP_EXP_2),
   makeSliderState(ui.SLIDER_HULL_MAX_CALC_TIME_US, 'Max Calc Time', 3.3, 0.1, 16.6, 12, 6, 'μs', map.MAP_EXP_2_ROUND),
 
-  makeSliderState(ui.SLIDER_START_X, 'X', -990, 1, 990, 0, 4, 'px'),
-  makeSliderState(ui.SLIDER_START_Y, 'Y', -990, 1, 990, 0, 4, 'px'),
+  makeSliderState(ui.SLIDER_START_X, 'X', -999, 1, 2000, 50, 4, 'px'),
+  makeSliderState(ui.SLIDER_START_Y, 'Y', -999, 1, 2000, 50, 4, 'px'),
   makeSliderState(ui.SLIDER_SCALE_START, 'Size', 0, 1, 990, 80, 3, 'px'),
-  makeAngleSliderState(ui.SLIDER_ANGLE_START, 8),
+  makeAngleSliderState(ui.SLIDER_ANGLE_START, 50),
   makeSliderState(ui.SLIDER_RATIO_B2_B1, 'b2 / b1', 0, 0.01, 1, 1, 4),
 
   makeIdSliderState(ui.SLIDER_ID_1_1, 2),
-  makeScaleSliderState(ui.SLIDER_SCALE_1_1, 0.9),
-  makeAngleSliderState(ui.SLIDER_ANGLE_1_1, 15),
+  makeScaleSliderState(ui.SLIDER_SCALE_1_1, 0.95),
+  makeAngleSliderState(ui.SLIDER_ANGLE_1_1, 23),
 
   makeIdSliderState(ui.SLIDER_ID_1_2, 1),
-  makeScaleSliderState(ui.SLIDER_SCALE_1_2, 0.40),
+  makeScaleSliderState(ui.SLIDER_SCALE_1_2, 0.35),
   makeAngleSliderState(ui.SLIDER_ANGLE_1_2, -65),
 
   makeIdSliderState(ui.SLIDER_ID_2_1, 1),
-  makeScaleSliderState(ui.SLIDER_SCALE_2_1, 0.8),
-  makeAngleSliderState(ui.SLIDER_ANGLE_2_1, -23),
+  makeScaleSliderState(ui.SLIDER_SCALE_2_1, 0.92),
+  makeAngleSliderState(ui.SLIDER_ANGLE_2_1, -20),
 
   makeIdSliderState(ui.SLIDER_ID_2_2, 2),
-  makeScaleSliderState(ui.SLIDER_SCALE_2_2, 0.5),
+  makeScaleSliderState(ui.SLIDER_SCALE_2_2, 0.21),
   makeAngleSliderState(ui.SLIDER_ANGLE_2_2, 73),
 ]

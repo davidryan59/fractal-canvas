@@ -3,7 +3,6 @@ import { buttonActive } from '../getters/button'
 import { getSliderDisplayValue } from '../getters/slider'
 import { verbosity } from '../_params'
 
-
 // Control shape of corners
 const sqrt_3_400 = 0.1 * (3/4) ** 0.5  // 0.08660...
 
@@ -40,7 +39,7 @@ const setupFractal = (objStore, getReduxState) => {
   objStore.fractal = {}
   objStore.fractal.start = {
     id: 1,
-    vector: [Math.floor(0.5 * objStore.canvas.elt.width) + start_x, 20 + start_y],
+    vector: [start_x, start_y],
     scale: scale_start,       // Will match to canvas
     angleDeg: angle_start,    // Should be pointing vertically up
     reflect: reflect_start,
