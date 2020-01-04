@@ -1,4 +1,4 @@
-import * as setup from '../setup/setupReduxState'
+import * as setup from '../../setup/setupReduxState'
 
 // Single item
 const uiItemReducerCreator = uiType => (state = {}, action) => {

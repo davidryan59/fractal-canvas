@@ -1,5 +1,5 @@
 import * as ui from '../general/uiNames'
-import { getSliderDisplayValue } from '../getters/slider'
+import { getSliderDisplayValue } from '../redux/getters/slider'
 import { statUpdatePeriodMs } from '../_params'
 
 

@@ -1,8 +1,8 @@
 import { connect } from 'react-redux'
 
 import Button from './Button'
-import { getThunk } from '../reducers/actions'
-import { BUTTON_PRESS } from '../reducers/uiItem'
+import { getThunk } from '../redux/actions'
+import { BUTTON_PRESS } from '../redux/reducers/uiItem'
 
 const mapStateToProps = (state, ownProps) => ({
 })

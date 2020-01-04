@@ -5,7 +5,7 @@ import thunk from 'redux-thunk'
 import { Provider } from 'react-redux'
 
 import AppC from './components/AppC'
-import appReducer from './reducers'
+import appReducer from './redux/reducers'
 import setupObjectStore from './setup/setupObjectStore'
 import { windowResizeHandler } from './handlers'
 

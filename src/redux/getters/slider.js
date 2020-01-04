@@ -1,4 +1,4 @@
-import { numericMap } from '../general/mappings'
+import { numericMap } from '../../general/mappings'
 
 export const getSliderByName = (state, sliderId) => {
   try {

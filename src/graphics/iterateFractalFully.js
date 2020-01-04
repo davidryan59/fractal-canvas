@@ -1,6 +1,6 @@
 import { verbosity } from '../_params'
 import * as ui from '../general/uiNames'
-import { getSliderDisplayValue } from '../getters/slider'
+import { getSliderDisplayValue } from '../redux/getters/slider'
 import iterateConvexHullOnce from './iterateConvexHullOnce'
 import iterateFractalOnce from './iterateFractalOnce'
 

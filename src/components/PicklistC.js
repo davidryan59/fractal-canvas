@@ -1,8 +1,8 @@
 import { connect } from 'react-redux'
 
 import Picklist from '../components/Picklist'
-import { getThunk } from '../reducers/actions'
-import { SET_PICKLIST } from '../reducers/uiItem'
+import { getThunk } from '../redux/actions'
+import { SET_PICKLIST } from '../redux/reducers/uiItem'
 
 const mapStateToProps = (state, ownProps) => ({
 })

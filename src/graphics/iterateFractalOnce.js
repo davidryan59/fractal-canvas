@@ -1,5 +1,5 @@
 import * as ui from '../general/uiNames'
-import { getSliderDisplayValue } from '../getters/slider'
+import { getSliderDisplayValue } from '../redux/getters/slider'
 import { sin, cos, degreesToRadians, loopsBetweenTimingChecks } from '../_params'
 
 

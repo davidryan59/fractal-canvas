@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 
-import { buttonActive } from '../getters/button'
+import { buttonActive } from '../redux/getters/button'
 import * as ui from '../general/uiNames'
 
 import App from './App'

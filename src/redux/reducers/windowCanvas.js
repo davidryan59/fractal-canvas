@@ -1,5 +1,5 @@
-import { getCanvasWidthFromWindowWidth } from '../_params'
-import { getInitialCanvasState, getInitialWindowState } from '../setup/setupReduxState'
+import { getCanvasWidthFromWindowWidth } from '../../_params'
+import { getInitialCanvasState, getInitialWindowState } from '../../setup/setupReduxState'
 
 export const WINDOW_RESIZE = 'WINDOW_RESIZE'
 

@@ -1,4 +1,4 @@
-import { buttonActive } from '../getters/button'
+import { buttonActive } from '../redux/getters/button'
 import * as ui from '../general/uiNames'
 import clearCanvas from './clearCanvas'
 import drawFractal from './drawFractal'

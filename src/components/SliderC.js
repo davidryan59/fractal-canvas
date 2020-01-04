@@ -1,9 +1,9 @@
 import { connect } from 'react-redux'
 
 import Slider from './Slider'
-import { getThunk } from '../reducers/actions'
+import { getThunk } from '../redux/actions'
 import makeNChars from '../general/makeNChars'
-import { SLIDER_MOVE } from '../reducers/uiItem'
+import { SLIDER_MOVE } from '../redux/reducers/uiItem'
 import { numericMap } from '../general/mappings'
 
 const mapStateToProps = (state, ownProps) => {

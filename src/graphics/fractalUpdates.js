@@ -1,10 +1,10 @@
 import setupCanvas from './setupCanvas'
 import setupFractal from './setupFractal'
 import startMainLoop from './startMainLoop'
-import { WINDOW_RESIZE } from '../reducers/windowCanvas'
+import { WINDOW_RESIZE } from '../redux/reducers/windowCanvas'
 import { verbosity } from '../_params'
 import * as ui from '../general/uiNames'
-import { buttonActive } from '../getters/button'
+import { buttonActive } from '../redux/getters/button'
 
 
 const dealWithAnimateToggle = (objStore, getReduxState) => {

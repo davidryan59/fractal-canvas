@@ -1,6 +1,6 @@
 import * as ui from '../general/uiNames'
-import { buttonActive } from '../getters/button'
-import { getSliderDisplayValue } from '../getters/slider'
+import { buttonActive } from '../redux/getters/button'
+import { getSliderDisplayValue } from '../redux/getters/slider'
 import { verbosity } from '../_params'
 
 // Control shape of corners
