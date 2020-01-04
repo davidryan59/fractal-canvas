@@ -11,12 +11,6 @@ export const windowSizeChangeMinDiff = 30
 export const initialCanvasHeight = 480
 export const getCanvasWidthFromWindowWidth = width => Math.round( width - windowSizeChangeMinDiff - 40 )
 
-// Convex Hull calculation control
-// Higher rounding values give fewer hull points (good) but less accurate (bad)
-export const hullRoundingAccuracy = 0.1
-// Higher hullCalcReps give more accurate hulls, but take longer to calculate
-export const hullCalcReps = 20
-
 // Define default convex hulls
 // For drawing, ought to have a rectangle
 export const defaultHullDrawing = [

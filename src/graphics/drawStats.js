@@ -8,18 +8,28 @@ const updateStatCache = (objStore, getReduxState) => {
   const st = objStore.stats
   const sC = objStore.statCache
   sC.maxCount = getSliderDisplayValue(reduxState, ui.SLIDER_MAX_COUNT)
-  sC.maxCalcTimeUs = getSliderDisplayValue(reduxState, ui.SLIDER_MAX_CALC_TIME_US)
-  sC.maxDrawTimeUs = getSliderDisplayValue(reduxState, ui.SLIDER_MAX_DRAW_TIME_US)
-  sC.animationRateHz = getSliderDisplayValue(reduxState, ui.SLIDER_ANIMATION_RATE) || 1
-  sC.maxAnimationTimeUs = Math.round(1000000 / sC.animationRateHz)
   sC.framesDrawn = st.framesDrawn
   sC.sizeCurrent = st.sizeCurrent
   sC.sizeAll = st.sizeAll
+
   sC.iterationsUsed = st.currentIteration
   sC.maxIterations = st.maxIterations
+
+  sC.hullIterationsUsed = st.hullIterationsUsed
+  sC.maxHullIterations = getSliderDisplayValue(reduxState, ui.SLIDER_HULL_ITERATIONS) // Not currently used
+
+  sC.animationRateHz = getSliderDisplayValue(reduxState, ui.SLIDER_ANIMATION_RATE) || 1
+  sC.maxAnimationTimeUs = Math.round(1000000 / sC.animationRateHz)
+
   sC.hullTimeUs = Math.round(1000 * (st.timeHullCalcEnd - st.timeHullCalcStart))
+  sC.maxHullTimeUs = getSliderDisplayValue(reduxState, ui.SLIDER_HULL_MAX_CALC_TIME_US)
+
   sC.calcTimeUs = Math.round(1000 * (st.timeIterationEnd - st.timeIterationStart))
+  sC.maxCalcTimeUs = getSliderDisplayValue(reduxState, ui.SLIDER_MAX_CALC_TIME_US)
+
   sC.drawTimeUs = Math.round(1000 * (st.timeDrawFractalEnd - st.timeDrawFractalStart))
+  sC.maxDrawTimeUs = getSliderDisplayValue(reduxState, ui.SLIDER_MAX_DRAW_TIME_US)
+
   sC.spareTimeUs = sC.maxAnimationTimeUs - sC.maxCalcTimeUs - sC.maxDrawTimeUs
   sC.lastUpdateTimeMs = performance.now()
 }
@@ -58,9 +68,10 @@ const drawStats = (objStore, getReduxState) => {
   linesUp = 7
   count = 0
   ctx.textAlign = 'right'
+  drawTextLineR(`hull iterations used: ${sC.hullIterationsUsed}`, 10 <= sC.hullIterationsUsed && sC.hullIterationsUsed === sC.maxHullIterations, sC.hullIterationsUsed <= 4)
   drawTextLineR(`iterations used: ${sC.iterationsUsed}`, sC.iterationsUsed < sC.maxIterations)
   drawTextLineR(`max time: ${sC.maxAnimationTimeUs} μs`, true)
-  drawTextLineR(`hull calc time: ${sC.hullTimeUs} μs`)
+  drawTextLineR(`hull calc, max calc time: ${sC.hullTimeUs}, ${sC.maxHullTimeUs} μs`, sC.hullTimeUs < sC.maxHullTimeUs, true)
   drawTextLineR(`calc, max calc time: ${sC.calcTimeUs}, ${sC.maxCalcTimeUs} μs`, sC.calcTimeUs < sC.maxCalcTimeUs, true)
   drawTextLineR(`draw, max draw time: ${sC.drawTimeUs}, ${sC.maxDrawTimeUs} μs`, sC.drawTimeUs < sC.maxDrawTimeUs, true)
   drawTextLineR(`spare time: ${sC.spareTimeUs} μs`, 0 < sC.spareTimeUs, true)

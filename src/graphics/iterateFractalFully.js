@@ -1,9 +1,8 @@
+import { verbosity } from '../_params'
 import * as ui from '../general/uiNames'
 import { getSliderDisplayValue } from '../getters/slider'
-import { verbosity, hullRoundingAccuracy, hullCalcReps } from '../_params'
 import iterateConvexHullOnce from './iterateConvexHullOnce'
 import iterateFractalOnce from './iterateFractalOnce'
-
 
 const iterateFractalFully = (objStore, getReduxState) => {
   if (verbosity) console.log("Calculating all iterations of fractal")
@@ -12,8 +11,16 @@ const iterateFractalFully = (objStore, getReduxState) => {
   objStore.stats.sizeAll = 1
 
   // Recalculate the convex hull for each fractal rule
+  const hullCalcReps = getSliderDisplayValue(reduxState, ui.SLIDER_HULL_ITERATIONS)
+  const hullRoundingAccuracy = getSliderDisplayValue(reduxState, ui.SLIDER_HULL_ROUNDING)
+  const hullMaxCalcTimeMs = 0.001 * getSliderDisplayValue(reduxState, ui.SLIDER_HULL_MAX_CALC_TIME_US)
   objStore.stats.timeHullCalcStart = performance.now()
-  for (let i=0; i<hullCalcReps; i++) iterateConvexHullOnce(objStore, getReduxState, hullRoundingAccuracy)
+  objStore.stats.hullIterationsUsed = 0
+  for (let i=0; i<hullCalcReps; i++) {
+    if (hullMaxCalcTimeMs < performance.now() - objStore.stats.timeHullCalcStart) break
+    iterateConvexHullOnce(objStore, getReduxState, hullRoundingAccuracy)
+    objStore.stats.hullIterationsUsed++
+  }
   objStore.stats.timeHullCalcEnd = performance.now()
 
   // Iterate fractal repeatedly until finished

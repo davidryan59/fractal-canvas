@@ -19,10 +19,11 @@ const App = ({ drawStateViewer }) =>
       <PanelC id={ui.PANEL_F1_C2} innerClassNames='greyBack' />
       <PanelC id={ui.PANEL_F2_C1} innerClassNames='greyBack' />
       <PanelC id={ui.PANEL_F2_C2} innerClassNames='greyBack' />
+      <PanelC id={ui.PANEL_ITERATION} innerClassNames='greyBack' />
+      <PanelC id={ui.PANEL_HULL} innerClassNames='greyBack' />
+      <PanelC id={ui.PANEL_GENERAL} innerClassNames='greyBack' />
     </div>
-    <PanelC id={ui.PANEL_MAIN} innerClassNames='flex greyBack justifyStart' />
     {(drawStateViewer) ? <StateViewerC /> : null}
   </div>
-
 
 export default App
