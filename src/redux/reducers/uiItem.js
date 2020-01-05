@@ -1,4 +1,4 @@
-import * as setup from '../../setup/setupReduxState'
+import * as init from '../initialise'
 
 // Single item
 const uiItemReducerCreator = uiType => (state = {}, action) => {
@@ -30,6 +30,6 @@ export const BUTTON_PRESS = 'BUTTON_PRESS'
 export const SET_PICKLIST = 'SET_PICKLIST'
 export const SLIDER_MOVE = 'SLIDER_MOVE'
 
-export const buttonsReducer = uiItemsReducerCreator(BUTTON_PRESS, setup.getInitialButtonsState)
-export const picklistsReducer = uiItemsReducerCreator(SET_PICKLIST, setup.getInitialPicklistsState)
-export const slidersReducer = uiItemsReducerCreator(SLIDER_MOVE, setup.getInitialSlidersState)
+export const buttonsReducer = uiItemsReducerCreator(BUTTON_PRESS, init.getInitialButtonsState)
+export const picklistsReducer = uiItemsReducerCreator(SET_PICKLIST, init.getInitialPicklistsState)
+export const slidersReducer = uiItemsReducerCreator(SLIDER_MOVE, init.getInitialSlidersState)

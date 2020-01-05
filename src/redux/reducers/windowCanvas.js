@@ -1,9 +1,9 @@
 import { getCanvasWidthFromWindowWidth } from '../../_params'
-import { getInitialCanvasState, getInitialWindowState } from '../../setup/setupReduxState'
+import * as init from '../initialise'
 
 export const WINDOW_RESIZE = 'WINDOW_RESIZE'
 
-export const canvasReducer = (state = getInitialCanvasState(), action) => {
+export const canvasReducer = (state = init.getInitialCanvasState(), action) => {
   switch (action.type) {
     case WINDOW_RESIZE:
       return {
@@ -15,7 +15,7 @@ export const canvasReducer = (state = getInitialCanvasState(), action) => {
   }
 }
 
-export const windowReducer = (state = getInitialWindowState(), action) => {
+export const windowReducer = (state = init.getInitialWindowState(), action) => {
   switch (action.type) {
     case WINDOW_RESIZE:
       return {
