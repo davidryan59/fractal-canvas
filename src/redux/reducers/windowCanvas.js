@@ -7,7 +7,7 @@ export const canvasReducer = (state = getInitialCanvasState(), action) => {
   switch (action.type) {
     case WINDOW_RESIZE:
       return {
-        width: getCanvasWidthFromWindowWidth( action.width ),
+        width: getCanvasWidthFromWindowWidth( action.payload.width ),
         height: state.height
       }
     default:
@@ -19,8 +19,8 @@ export const windowReducer = (state = getInitialWindowState(), action) => {
   switch (action.type) {
     case WINDOW_RESIZE:
       return {
-        width: action.width,
-        height: action.height
+        width: action.payload.width,
+        height: action.payload.height
       }
     default:
       return state

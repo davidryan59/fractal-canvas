@@ -6,7 +6,7 @@ const uiItemReducerCreator = uiType => (state = {}, action) => {
     case uiType:
       return {
         ...state,
-        value: action.value
+        value: action.payload.value
       }
     default:
       return state
@@ -19,7 +19,7 @@ const uiItemsReducerCreator = (uiType, initFn) => (state = initFn(), action) => 
   switch (action.type) {
     case uiType:
       return state.map(itemState =>
-        (itemState.id === action.id) ? itemReducer(itemState, action) : itemState
+        (itemState.id === action.payload.id) ? itemReducer(itemState, action) : itemState
       )
     default:
       return state

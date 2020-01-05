@@ -2,15 +2,15 @@ import { verbosity } from '../_params'
 import { fractalUpdate } from '../graphics/fractalUpdates'
 
 let nextActionId = 0
-export const getActionObject = (type, data) => ({
-  type,
+export const getActionObject = (type, payload) => ({
   actionId: nextActionId++,
-  ...data
+  type,
+  payload
 })
 
-export const getThunk = (type, data) => (reduxDispatch, getReduxState, objStore) => {
-  const theAction = getActionObject(type, data)
-  if (2 <= verbosity) console.log(theAction)
-  reduxDispatch(theAction)
-  fractalUpdate(theAction, getReduxState, objStore)
+export const getThunk = (type, payload) => (reduxDispatch, getReduxState, objStore) => {
+  const action = getActionObject(type, payload)
+  if (2 <= verbosity) console.log(action)
+  reduxDispatch(action)
+  fractalUpdate(action, getReduxState, objStore)
 }

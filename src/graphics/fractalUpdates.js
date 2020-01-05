@@ -13,13 +13,13 @@ const dealWithAnimateToggle = (objStore, getReduxState) => {
   if (isNowActive) startMainLoop(objStore, getReduxState)
 }
 
-export const fractalUpdate = (data, getReduxState, objStore) => {
-  if (objStore.setup && data && getReduxState) {
-    if (data.type === WINDOW_RESIZE) {
+export const fractalUpdate = (action, getReduxState, objStore) => {
+  if (objStore.setup && action && getReduxState) {
+    if (action.type === WINDOW_RESIZE) {
       // Canvas size may have changed, reset fractal
       setupFractal(objStore, getReduxState)
     } else {
-      switch (data.id) {
+      switch (action.payload.id) {
         case ui.SLIDER_MAX_ITERATIONS:
         case ui.SLIDER_MIN_PX:
         case ui.SLIDER_MAX_COUNT:
@@ -58,7 +58,7 @@ export const fractalUpdate = (data, getReduxState, objStore) => {
           break
 
         case ui.SLIDER_CANVAS_Y:
-          objStore.canvas.elt.height = data.value
+          objStore.canvas.elt.height = action.payload.value
           // No need to setupFractal, coords are still fine
           break
 
