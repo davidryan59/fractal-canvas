@@ -1,3 +1,6 @@
+// Local storage
+export const localStorageKey = 'fractal-canvas'
+
 // Control whether to console.log the developer info
 // export const verbosity = 0  // log nothing
 export const verbosity = 1  // log main things
