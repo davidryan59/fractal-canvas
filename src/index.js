@@ -13,8 +13,7 @@ import AppC from './components/AppC'
 
 import setupObjectStore from './setup/setupObjectStore'
 import startMainLoop from './graphics/startMainLoop'
-import { windowResizeHandler } from './handlers'
-
+import { windowResizeHandler, keyUpHandler, keyDownHandler } from './handlers'
 
 // Object store via thunk with extra argument
 const objStore = {}
@@ -52,5 +51,6 @@ window.addEventListener('load', () => {
   startMainLoop(objStore, reduxStore.getState)
 })
 
-// If window resizes, that has an additional action
-window.addEventListener('resize', e => windowResizeHandler(e, reduxStore))
+window.addEventListener('resize', e => windowResizeHandler(e, objStore, reduxStore))
+window.addEventListener('keyup', e => keyUpHandler(e, objStore, reduxStore))
+window.addEventListener('keydown', e => keyDownHandler(e, objStore, reduxStore))

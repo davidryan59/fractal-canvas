@@ -23,6 +23,7 @@ const App = ({ drawStateViewer }) =>
       <PanelC id={ui.PANEL_HULL} innerClassNames='greyBack' />
       <PanelC id={ui.PANEL_GENERAL} innerClassNames='greyBack' />
     </div>
+    <div><p>Press 'S' to save Redux state to file. Loading from file not yet implemented.</p></div>
     {(drawStateViewer) ? <StateViewerC /> : null}
   </div>
 
