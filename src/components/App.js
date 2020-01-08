@@ -9,6 +9,13 @@ import * as ui from '../general/uiNames'
 
 const App = ({ drawStateViewer }) =>
   <div className="appDiv">
+    <div className='appTopLine' style={{ padding: '2px 10px' }}>
+      <b style={{ fontSize: '120%' }}>Fractal Canvas</b> -
+      Create and customise a fractal, and display it in the web browser
+      - Try changing the <b>minimum iteration size</b>, animation rate, and various angles.
+      - Have fun!
+      - <i>by David Ryan, 2020</i>
+    </div>
     <PanelC id={ui.PANEL_CANVAS} innerClassNames='flex greyBack justifyStart' />
     <div className='flex justifyStart'>
       <CanvasC />
@@ -23,7 +30,7 @@ const App = ({ drawStateViewer }) =>
       <PanelC id={ui.PANEL_HULL} innerClassNames='greyBack' />
       <PanelC id={ui.PANEL_GENERAL} innerClassNames='greyBack' />
     </div>
-    <div><p>Press 'S' to save Redux state to file. Loading from file not yet implemented.</p></div>
+    <div><p>Press 'S' to save Redux state to file. Loading from file not yet implemented. View the code in the <a href='https://github.com/davidryan59/fractal-canvas'>GitHub repo</a>.</p></div>
     {(drawStateViewer) ? <StateViewerC /> : null}
   </div>
 

@@ -12,7 +12,22 @@ body {
   background: #222;
   border: 1px #999 solid;
   border-radius: 10px;
-  padding: 7px;
+  padding: 0px 7px;
+}
+
+.appTopLine {
+  margin: 0px 0px;
+  font-size: 14px;
+}
+
+a {
+  text-decoration: none;
+  color: #F3F;
+}
+
+a:hover {
+  text-decoration: underline;
+  color: #D6F;
 }
 
 div {
