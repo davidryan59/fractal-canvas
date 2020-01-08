@@ -37,7 +37,7 @@
     "eject": "react-scripts eject",
     "test": "react-scripts test --coverage",
     "test:ci": "react-scripts test --coverage --watchAll=false",
-    "prepublishOnly": "npm run test:ci && npm run build"
+    "prepublishOnly": "npm run lint && npm run test:ci && npm run build"
   },
   "eslintConfig": {
     "extends": "react-app"
