@@ -2,7 +2,7 @@
 
 [![Build status](https://travis-ci.org/davidryan59/fractal-canvas.svg?master)](https://travis-ci.org/davidryan59)
 
-A project to display a fractal on a canvas, and to animate it with full control over the generating parameters.
+A project to display a fractal on a canvas, and to animate it with full control over the parameters that specify the fractal.
 
 You can [try out Fractal Canvas for yourself](https://fractal-canvas.web.app)!
 
