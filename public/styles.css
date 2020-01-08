@@ -22,12 +22,12 @@ body {
 
 a {
   text-decoration: none;
-  color: #F3F;
+  color: #F9F;
 }
 
 a:hover {
   text-decoration: underline;
-  color: #D6F;
+  color: #D9F;
 }
 
 div {
