@@ -31,7 +31,7 @@ const App = ({ drawStateViewer }) =>
     </div>
     <div>
       <p>
-        Press 'S' to save Reddux state to file.
+        Press 'S' to save Redux state to file.
         Loading from file not yet implemented.
         View the code in the <a href='https://github.com/davidryan59/fractal-canvas'>GitHub repo</a>.
         Please consider making a <a href='https://blockchain.com/btc/payment_request?address=1F1oJeRJMtiDBzN8fpvfRid55zvRBQ6bhx&amount=0.001&message=Please consider making a small donation, to help support development of Fractal Canvas.' target='_blank' rel='noopener noreferrer'>small donation of Bitcoin</a> to help support development of Fractal Canvas.
