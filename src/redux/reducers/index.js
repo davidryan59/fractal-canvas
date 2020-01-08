@@ -8,7 +8,7 @@ const appReducer = combineReducers({
   canvas: wc.canvasReducer,
   picklists: ui.picklistsReducer,
   buttons: ui.buttonsReducer,
-  sliders: ui.slidersReducer,
+  sliders: ui.slidersReducer
 })
 
 export default appReducer

@@ -14,13 +14,13 @@ const startMainLoop = (objStore, getReduxState) => {
     // Canvas animation items
     const rateHz = getSliderDisplayValue(reduxState, ui.SLIDER_ANIMATION_RATE)
     const timeDiff = timeLoopStart - prevTime
-    if (0 < rateHz && 1000 / rateHz < timeDiff) {
+    if (rateHz > 0 && 1000 / rateHz < timeDiff) {
       prevTime = timeLoopStart
       drawCanvas(objStore, getReduxState)
     }
   }
   // Start loop
-  if (verbosity) console.log(`Starting main loop`)
+  if (verbosity) console.log('Starting main loop')
   mainLoop()
 }
 

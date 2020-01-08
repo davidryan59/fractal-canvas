@@ -2,33 +2,33 @@ import { initialCanvasHeight, getCanvasWidthFromWindowWidth } from '../_params'
 import * as map from '../general/mappings'
 import * as ui from '../general/uiNames'
 
-
 export const getInitialWindowState = () => ({
   width: window.innerWidth,
   height: window.innerHeight
 })
-
 
 export const getInitialCanvasState = () => ({
   width: getCanvasWidthFromWindowWidth(window.innerWidth),
   height: initialCanvasHeight
 })
 
-
 // PICKLISTS
 export const getInitialPicklistsState = () => []
-
 
 // BUTTONS / TOGGLES
 export const makeToggleState =
   (id, labelInactive, labelActive, value, widthPx) =>
     ({
       type: ui.TYPE_TOGGLE,
-      id, labelInactive, labelActive, value, widthPx
+      id,
+      labelInactive,
+      labelActive,
+      value,
+      widthPx
     })
 
 export const makeReflectToggleState = id =>
-    makeToggleState(id, 'Normal', 'REFLECT L/R', false, 100)
+  makeToggleState(id, 'Normal', 'REFLECT L/R', false, 100)
 
 export const getInitialButtonsState = () => [
   makeReflectToggleState(ui.TOGGLE_REFLECT_START),
@@ -38,9 +38,8 @@ export const getInitialButtonsState = () => [
   makeReflectToggleState(ui.TOGGLE_REFLECT_2_2),
   makeToggleState(ui.TOGGLE_ANIMATE, 'Animation OFF', 'Animation ON', true, 110),
   makeToggleState(ui.TOGGLE_DISPLAY_STATS, 'Stats OFF', 'Stats ON', true, 80),
-  makeToggleState(ui.TOGGLE_DISPLAY_STATEVIEW, 'State Viewer OFF', 'State Viewer ON', false, 120),
+  makeToggleState(ui.TOGGLE_DISPLAY_STATEVIEW, 'State Viewer OFF', 'State Viewer ON', false, 120)
 ]
-
 
 // SLIDERS / INPUT RANGES
 // Mandatory id ... len
@@ -49,18 +48,25 @@ export const makeSliderState =
   (id, label, min, step, max, value, len, unit, displayFn) =>
     ({
       type: ui.TYPE_SLIDER,
-      id, label, min, step, max, value, len, unit, displayFn
+      id,
+      label,
+      min,
+      step,
+      max,
+      value,
+      len,
+      unit,
+      displayFn
     })
 
 export const makeIdSliderState = (id, value) =>
-    makeSliderState(id, 'Id', 1, 1, 2, value, 1)
+  makeSliderState(id, 'Id', 1, 1, 2, value, 1)
 
 export const makeAngleSliderState = (id, value) =>
-    makeSliderState(id, 'Angle', -270, 0.1, 270, value, 6, '°')
+  makeSliderState(id, 'Angle', -270, 0.1, 270, value, 6, '°')
 
 export const makeScaleSliderState = (id, value) =>
-    makeSliderState(id, 'Scale', 0, 0.001, 0.999, value, 5)
-
+  makeSliderState(id, 'Scale', 0, 0.001, 0.999, value, 5)
 
 export const getInitialSlidersState = () => [
   makeSliderState(ui.SLIDER_MAX_ITERATIONS, 'Max Iterations', 0, 1, 99, 50, 2),
@@ -96,5 +102,5 @@ export const getInitialSlidersState = () => [
 
   makeIdSliderState(ui.SLIDER_ID_2_2, 2),
   makeScaleSliderState(ui.SLIDER_SCALE_2_2, 0.21),
-  makeAngleSliderState(ui.SLIDER_ANGLE_2_2, 73),
+  makeAngleSliderState(ui.SLIDER_ANGLE_2_2, 73)
 ]

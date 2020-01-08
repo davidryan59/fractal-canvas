@@ -2,7 +2,7 @@
 export const localStorageKey = 'fractal-canvas'
 
 // Control whether to console.log the developer info
-export const verbosity = 0  // log nothing
+export const verbosity = 0 // log nothing
 // export const verbosity = 1  // log main things
 // export const verbosity = 2  // log more details
 
@@ -12,7 +12,7 @@ export const windowSizeChangeMinDiff = 30
 
 // Canvas control
 export const initialCanvasHeight = 480
-export const getCanvasWidthFromWindowWidth = width => Math.round( width - windowSizeChangeMinDiff - 40 )
+export const getCanvasWidthFromWindowWidth = width => Math.round(width - windowSizeChangeMinDiff - 40)
 
 // Define default convex hulls
 // For drawing, ought to have a rectangle
@@ -20,11 +20,11 @@ export const defaultHullDrawing = [
   [0, 0],
   [1, 0],
   [1, 1],
-  [0, 1],
+  [0, 1]
 ]
 // For iteration, only need to start with a single point
 export const defaultHullIteration = [
-  [0, 0],
+  [0, 0]
 ]
 
 // Don't check performance/timing every loop, skip this number of loops

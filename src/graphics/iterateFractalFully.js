@@ -5,7 +5,7 @@ import iterateConvexHullOnce from './iterateConvexHullOnce'
 import iterateFractalOnce from './iterateFractalOnce'
 
 const iterateFractalFully = (objStore, getReduxState) => {
-  if (verbosity) console.log("Calculating all iterations of fractal")
+  if (verbosity) console.log('Calculating all iterations of fractal')
   const reduxState = getReduxState()
   objStore.fractal.current = [objStore.fractal.start]
   objStore.stats.sizeAll = 1
@@ -16,7 +16,7 @@ const iterateFractalFully = (objStore, getReduxState) => {
   const hullMaxCalcTimeMs = 0.001 * getSliderDisplayValue(reduxState, ui.SLIDER_HULL_MAX_CALC_TIME_US)
   objStore.stats.timeHullCalcStart = performance.now()
   objStore.stats.hullIterationsUsed = 0
-  for (let i=0; i<hullCalcReps; i++) {
+  for (let i = 0; i < hullCalcReps; i++) {
     if (hullMaxCalcTimeMs < performance.now() - objStore.stats.timeHullCalcStart) break
     iterateConvexHullOnce(objStore, getReduxState, hullRoundingAccuracy)
     objStore.stats.hullIterationsUsed++

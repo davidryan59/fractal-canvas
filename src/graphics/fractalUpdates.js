@@ -6,7 +6,6 @@ import { verbosity } from '../_params'
 import * as ui from '../general/uiNames'
 import { buttonActive } from '../redux/getters/button'
 
-
 const dealWithAnimateToggle = (objStore, getReduxState) => {
   const isNowActive = buttonActive(getReduxState(), ui.TOGGLE_ANIMATE)
   if (verbosity) console.log(`Animation state changed to ${isNowActive}`)

@@ -2,7 +2,6 @@ import * as ui from '../general/uiNames'
 import { getSliderDisplayValue } from '../redux/getters/slider'
 import { statUpdatePeriodMs } from '../_params'
 
-
 const updateStatCache = (objStore, getReduxState) => {
   const reduxState = getReduxState()
   const st = objStore.stats
@@ -37,8 +36,7 @@ const updateStatCache = (objStore, getReduxState) => {
 const drawStats = (objStore, getReduxState) => {
   // Recalculate statCache several times a second
   const sC = objStore.statCache
-  if (!sC.lastUpdateTimeMs || statUpdatePeriodMs < performance.now() - sC.lastUpdateTimeMs)
-    updateStatCache(objStore, getReduxState)
+  if (!sC.lastUpdateTimeMs || statUpdatePeriodMs < performance.now() - sC.lastUpdateTimeMs) { updateStatCache(objStore, getReduxState) }
 
   // General setup
   const ctx = objStore.canvas.ctx
@@ -68,13 +66,13 @@ const drawStats = (objStore, getReduxState) => {
   linesUp = 7
   count = 0
   ctx.textAlign = 'right'
-  drawTextLineR(`hull iterations used: ${sC.hullIterationsUsed}`, 10 <= sC.hullIterationsUsed && sC.hullIterationsUsed === sC.maxHullIterations, sC.hullIterationsUsed <= 4)
+  drawTextLineR(`hull iterations used: ${sC.hullIterationsUsed}`, sC.hullIterationsUsed >= 10 && sC.hullIterationsUsed === sC.maxHullIterations, sC.hullIterationsUsed <= 4)
   drawTextLineR(`iterations used: ${sC.iterationsUsed}`, sC.iterationsUsed < sC.maxIterations)
   drawTextLineR(`max time: ${sC.maxAnimationTimeUs} μs`, true)
   drawTextLineR(`hull calc, max calc time: ${sC.hullTimeUs}, ${sC.maxHullTimeUs} μs`, sC.hullTimeUs < sC.maxHullTimeUs, true)
   drawTextLineR(`calc, max calc time: ${sC.calcTimeUs}, ${sC.maxCalcTimeUs} μs`, sC.calcTimeUs < sC.maxCalcTimeUs, true)
   drawTextLineR(`draw, max draw time: ${sC.drawTimeUs}, ${sC.maxDrawTimeUs} μs`, sC.drawTimeUs < sC.maxDrawTimeUs, true)
-  drawTextLineR(`spare time: ${sC.spareTimeUs} μs`, 0 < sC.spareTimeUs, true)
+  drawTextLineR(`spare time: ${sC.spareTimeUs} μs`, sC.spareTimeUs > 0, true)
 }
 
 export default drawStats

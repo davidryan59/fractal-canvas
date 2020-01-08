@@ -45,6 +45,10 @@
   "standard": {
     "env": [
       "jest"
+    ],
+    "globals": [
+      "performance",
+      "Blob"
     ]
   },
   "browserslist": {

@@ -3,7 +3,6 @@ import { getSliderDisplayValue } from '../redux/getters/slider'
 import { sin, cos, degreesToRadians, loopsBetweenTimingChecks, drawWarnRatio, defaultHullDrawing } from '../_params'
 import iterateFractalFully from './iterateFractalFully'
 
-
 const drawFractal = (objStore, getReduxState) => {
   // Get from stores
   const ctx = objStore.canvas.ctx
@@ -18,7 +17,7 @@ const drawFractal = (objStore, getReduxState) => {
 
   // General setup
   objStore.stats.timeDrawFractalStart = performance.now()
-  const yTransform = objStore.canvas.elt.height   // Used to convert coords from top left to bottom left of canvas
+  const yTransform = objStore.canvas.elt.height // Used to convert coords from top left to bottom left of canvas
   ctx.lineCap = 'round'
   let brightness = 1
   // Create function to range 0..1 to range 0..255 * brightness
@@ -27,12 +26,11 @@ const drawFractal = (objStore, getReduxState) => {
   // Iterate over items to draw
   const len = items.length
   const rLen = (len <= 1) ? 1 : 1 / (len - 1)
-  for (let i=0; i<len; i++) {
-
+  for (let i = 0; i < len; i++) {
     // Periodically check there is still time left
     if (i % loopsBetweenTimingChecks === 0) {
       const drawRatio = (performance.now() - objStore.stats.timeDrawFractalStart) / maxDrawTimeMs
-      if (1 < drawRatio) {
+      if (drawRatio > 1) {
         // Simply stop drawing...
         // ideally would do something quick to draw earlier iterations...
         break
@@ -57,7 +55,7 @@ const drawFractal = (objStore, getReduxState) => {
     // Going to draw the convex hull from the fractal rule
     // Variables for colouring
     const posFract = rLen * i
-    const sizeFract = Math.max(0, Math.min(1, 0.5 + Math.log10(scale/minScalePx)))
+    const sizeFract = Math.max(0, Math.min(1, 0.5 + Math.log10(scale / minScalePx)))
     const idFract = (id < 1.5) ? 1 : -1
     // Different colouring rules for 'branch' and 'leaf'
     const branchR = 1 - posFract
@@ -72,15 +70,15 @@ const drawFractal = (objStore, getReduxState) => {
       : `rgb(${sc255(leafR)}, ${sc255(leafG)}, ${sc255(leafB)})`
 
     // Trace the convex hull for this fractal
-    ctx.beginPath();
+    ctx.beginPath()
     const hull = objStore.fractal.rules[id].hull || defaultHullDrawing
-    for (let j=0; j<hull.length; j++) {
+    for (let j = 0; j < hull.length; j++) {
       const hullPoint = hull[j]
       const u = hullPoint[0]
       const v = hullPoint[1]
-      const newX = x + scale * (u * rFactor *  cos(angleRadians) + v * sin(angleRadians))
+      const newX = x + scale * (u * rFactor * cos(angleRadians) + v * sin(angleRadians))
       const newY = y + scale * (u * rFactor * -sin(angleRadians) + v * cos(angleRadians))
-      ctx.lineTo(newX, yTransform - newY);
+      ctx.lineTo(newX, yTransform - newY)
     }
     ctx.fill()
   }

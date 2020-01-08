@@ -1,14 +1,13 @@
-import React from 'react';
+import React from 'react'
 
-import CanvasC from './CanvasC';
-import PanelC from './PanelC';
-import StateViewerC from './StateViewerC';
+import CanvasC from './CanvasC'
+import PanelC from './PanelC'
+import StateViewerC from './StateViewerC'
 
 import * as ui from '../general/uiNames'
 
-
 const App = ({ drawStateViewer }) =>
-  <div className="appDiv">
+  <div className='appDiv'>
     <div className='appTopLine' style={{ padding: '2px 10px' }}>
       <b style={{ fontSize: '120%' }}>Fractal Canvas</b> -
       Create and customise a fractal, and display it in the web browser

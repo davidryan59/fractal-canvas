@@ -2,7 +2,6 @@ import * as ui from '../general/uiNames'
 import { getSliderDisplayValue } from '../redux/getters/slider'
 import { sin, cos, degreesToRadians, loopsBetweenTimingChecks } from '../_params'
 
-
 const iterateFractalOnce = (objStore, getReduxState) => {
   // Get from stores
   const reduxState = getReduxState()
@@ -19,7 +18,7 @@ const iterateFractalOnce = (objStore, getReduxState) => {
   const items = objStore.fractal.current
   const rules = objStore.fractal.rules
   let result = []
-  for (let i=0; i<items.length; i++) {
+  for (let i = 0; i < items.length; i++) {
     // Periodically check various maximum have not been exceeded
     if (i % loopsBetweenTimingChecks === 0) {
       const calcTimeExceeded = (maxCalcTimeMs < performance.now() - objStore.stats.timeIterationStart)
@@ -42,12 +41,12 @@ const iterateFractalOnce = (objStore, getReduxState) => {
       result.push(item)
     } else {
       // Iterate item
-      for (let j=0; j<itemRules.children.length; j++) {
+      for (let j = 0; j < itemRules.children.length; j++) {
         const childRule = itemRules.children[j]
         const newScale = item.scale * childRule.scale
         // Discard any items of zero scale
         // e.g. rule had zero scale
-        if (0 < newScale) {
+        if (newScale > 0) {
           // Setup newItem
           aChildGenerated = true
           const newItem = {}
@@ -55,7 +54,7 @@ const iterateFractalOnce = (objStore, getReduxState) => {
           // Some simple calcs
           newItem.id = childRule.id
           newItem.scale = newScale
-          newItem.reflect = item.reflect ^ childRule.reflect  // XOR
+          newItem.reflect = item.reflect ^ childRule.reflect // XOR
           newItem.angleDeg = item.angleDeg + branchAxisReflectFactor * childRule.angleDeg
           // Vector slightly more complex
           const x1 = item.vector[0]
@@ -65,7 +64,7 @@ const iterateFractalOnce = (objStore, getReduxState) => {
           const u = childRule.vector[0]
           const v = childRule.vector[1]
           // Matrix is rotation (factor = 1) or reflection (factor = -1)
-          const x2 = x1 + r * (u * branchAxisReflectFactor *  cos(a) + v * sin(a))
+          const x2 = x1 + r * (u * branchAxisReflectFactor * cos(a) + v * sin(a))
           const y2 = y1 + r * (u * branchAxisReflectFactor * -sin(a) + v * cos(a))
           newItem.vector = [x2, y2]
           result.push(newItem)

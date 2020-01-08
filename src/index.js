@@ -3,7 +3,7 @@ import React from 'react'
 import { createStore, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
 import * as storage from 'redux-storage'
-import createEngine from 'redux-storage-engine-localstorage';
+import createEngine from 'redux-storage-engine-localstorage'
 import { localStorageKey } from './_params'
 import appReducer from './redux/reducers'
 
@@ -20,9 +20,9 @@ const objStore = {}
 const thunkMiddleware = thunk.withExtraArgument(objStore)
 
 // Local storage
-const appReducerWithStorage = storage.reducer(appReducer);
-const localStorageEngine = createEngine(localStorageKey);
-const localStorageMiddleware = storage.createMiddleware(localStorageEngine);
+const appReducerWithStorage = storage.reducer(appReducer)
+const localStorageEngine = createEngine(localStorageKey)
+const localStorageMiddleware = storage.createMiddleware(localStorageEngine)
 
 // Create store with all middleware
 // Local storage takes plain actions, so goes after thunk
@@ -30,13 +30,12 @@ const middlewares = [thunkMiddleware, localStorageMiddleware]
 const reduxStore = createStore(appReducerWithStorage, applyMiddleware(...middlewares))
 
 // Load any pre-existing state from local storage - this is async
-const load = storage.createLoader(localStorageEngine);
+const load = storage.createLoader(localStorageEngine)
 console.log(`Loading any previously saved state from key ${localStorageKey} in local storage`)
 // localStorage.removeItem(localStorageKey)   // TEST LINE ONLY - test what happens if save state is removed
 load(reduxStore)
-    .then((newState) => console.log('Loaded state:', newState))
-    .catch(() => console.log('Failed to load previous state'));
-
+  .then((newState) => console.log('Loaded state:', newState))
+  .catch(() => console.log('Failed to load previous state'))
 
 render(
   <Provider store={reduxStore}>

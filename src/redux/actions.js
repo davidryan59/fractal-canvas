@@ -10,7 +10,7 @@ export const getActionObject = (type, payload) => ({
 
 export const getThunk = (type, payload) => (reduxDispatch, getReduxState, objStore) => {
   const action = getActionObject(type, payload)
-  if (2 <= verbosity) console.log(action)
+  if (verbosity >= 2) console.log(action)
   reduxDispatch(action)
   fractalUpdate(action, getReduxState, objStore)
 }
