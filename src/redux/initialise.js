@@ -63,13 +63,13 @@ export const makeScaleSliderState = (id, value) =>
 
 
 export const getInitialSlidersState = () => [
-  makeSliderState(ui.SLIDER_MAX_ITERATIONS, 'Max Iterations', 0, 1, 99, 16, 2),
+  makeSliderState(ui.SLIDER_MAX_ITERATIONS, 'Max Iterations', 0, 1, 99, 50, 2),
   makeSliderState(ui.SLIDER_MIN_PX, 'Min Iteration Size', -9.9, 0.02, 6, -1, 5, 'px', map.MAP_EXP_2_INV),
   makeSliderState(ui.SLIDER_MAX_COUNT, 'Max Count', 0, 0.1, 19.9, 16, 6, '', map.MAP_EXP_2_ROUND),
   makeSliderState(ui.SLIDER_MAX_CALC_TIME_US, 'Max Calc Time', 3.3, 0.1, 19.9, 14.2, 6, 'μs', map.MAP_EXP_2_ROUND),
   makeSliderState(ui.SLIDER_MAX_DRAW_TIME_US, 'Max Draw Time', 3.3, 0.1, 19.9, 15.4, 6, 'μs', map.MAP_EXP_2_ROUND),
 
-  makeSliderState(ui.SLIDER_ANIMATION_RATE, 'Animation Rate', 0, 1, 9, 4, 2, 'Hz', map.MAP_FRAME_RATES),
+  makeSliderState(ui.SLIDER_ANIMATION_RATE, 'Animation Rate', 0, 1, 9, 5, 2, 'Hz', map.MAP_FRAME_RATES),
   makeSliderState(ui.SLIDER_CANVAS_Y, 'Height', 60, 6, 1600, initialCanvasHeight, 4, 'px'),
 
   makeSliderState(ui.SLIDER_HULL_ITERATIONS, 'Iterations', 0, 1, 99, 25, 2),

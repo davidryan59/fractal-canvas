@@ -2,8 +2,8 @@
 export const localStorageKey = 'fractal-canvas'
 
 // Control whether to console.log the developer info
-// export const verbosity = 0  // log nothing
-export const verbosity = 1  // log main things
+export const verbosity = 0  // log nothing
+// export const verbosity = 1  // log main things
 // export const verbosity = 2  // log more details
 
 // Minimum number of pixels change in window size (vertically or horizontally)

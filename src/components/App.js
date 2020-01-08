@@ -12,7 +12,7 @@ const App = ({ drawStateViewer }) =>
     <div className='appTopLine' style={{ padding: '2px 10px' }}>
       <b style={{ fontSize: '120%' }}>Fractal Canvas</b> -
       Create and customise a fractal, and display it in the web browser
-      - Try changing the <b>minimum iteration size</b>, animation rate, and various angles.
+      - Try changing the <b>minimum iteration size</b>, various angles, and orientation of each component.
       - Have fun!
       - <i>by David Ryan, 2020</i>
     </div>
